@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ControlJogo;
+using CModelJogo;
 
 namespace VisaoJogo
 {
     public partial class frmTelaJogo : Form
     {
+
+        bool existsError;
 
         public frmTelaJogo()
         {
@@ -14,42 +18,36 @@ namespace VisaoJogo
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Lotofacil g = new Lotofacil(15, 15, 18, 25);
+            existsError = false;
+            Lotofacil g = new Lotofacil(
+                insertedValues(txtTotalNumbers), 15, 18, 25);
             g.playGame();
+            new CModelJogo.Model();
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkLotofacil.Checked == true) {
-                allowFields(gboboxLotoFacil);
+            if (chkLotofacil.Checked) {
+                FieldsControl.ModifyControl(gboboxLotoFacil, true);
             }
             else
             {
-                denyFields(gboboxLotoFacil);
+                FieldsControl.ModifyControl(gboboxLotoFacil, false);
             }
         }
 
-        private void allowFields(Control gbobox)
-        {
-            foreach(Control item in gbobox.Controls)
-            {
-                if (item is TextBox)
-                {
-                    item.Enabled = true;
-                }
-            }
-        }
+        
 
-        private void denyFields(Control gbobox)
+        private int insertedValues(TextBox field)
         {
-            foreach (Control item in gbobox.Controls)
+            try
             {
-                if (item is TextBox)
-                {
-                    item.Enabled = false;
-                    item.Text = "";
-                }
+                return Convert.ToInt16(field.Text);
+            }catch(Exception ex)
+            {
+                existsError = true;
+                return 1;
             }
-        }
+        } 
     }
 }
