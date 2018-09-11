@@ -8,34 +8,24 @@ namespace ConsoleApp1
 {
     public class Game
     {
+        private int[] game;
+        public static List<int[]> gamePlayed;
 
-        int[] game;
-        int number, totalNumbers;
+        private int numberListToBet, totalNumbers;
 
-        public Game(int number, int min, int max, int totalNumbers)
+        public Game(int numberListToBet, int min, int max, int totalNumbers)
         {
-            if (number < min)
-            {
-                this.number = min;
-            }
-            else if (number > max)
-            {
-                this.number = max;
-            }
-            else{
-                this.number = number;
-            }
-            game = new int[this.number];
+            this.numberListToBet = validateNumbersToBet(numberListToBet, min, max);
+            game = new int[this.numberListToBet];
             this.totalNumbers = totalNumbers;
+            gamePlayed = new List<int[]>();
         }
 
         public void playGame()
         {
-            
             int counter = 0;
             
-
-            while (counter < number)
+            while (counter < numberListToBet)
             {
                 var newNumber = getNumber();
                 if (!existNumberOnGame(newNumber))
@@ -55,6 +45,7 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine(mensagem);
+            gamePlayed.Add(game);
         }
 
         private bool existNumberOnGame(int playedNumber)
@@ -77,6 +68,22 @@ namespace ConsoleApp1
                 if (tempNumber >= 1) foundNumber = true;
             }
             return tempNumber;
+        }
+
+        private int validateNumbersToBet(int numbersToBet, int min, int max)
+        {
+            if (numbersToBet < min)
+            {
+                return min;
+            }
+            else if (numbersToBet > max)
+            {
+                return max;
+            }
+            else
+            {
+                return numbersToBet;
+            }
         }
     }
 }

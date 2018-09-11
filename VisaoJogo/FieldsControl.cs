@@ -9,9 +9,9 @@ namespace VisaoJogo
 {
     public static class FieldsControl
     {
-        public static void ModifyControl(Control gbobox, bool enable)
+        public static void ModifyControl(Control pnlLotofacil, bool enable)
         {
-            foreach (Control item in gbobox.Controls)
+            foreach (Control item in pnlLotofacil.Controls)
             {
                 fieldsControl(item, enable);
             }
