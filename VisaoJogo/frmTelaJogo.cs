@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ControlJogo;
 using CModelJogo;
+using ConsoleApp1;
 
 namespace VisaoJogo
 {
     public partial class frmTelaJogo : Form
     {
-        private Lotofacil lf;
-        bool existsError = false;
+        private Game lf;
+        private List<int[]> gameListLF;
 
         public frmTelaJogo()
         {
@@ -18,19 +19,25 @@ namespace VisaoJogo
 
         private void playLotofacil()
         {
-            lf = new Lotofacil(
+            
+            gameListLF = new List <int[]>();
+            int gameplayers = insertedValues(txtGames);
+            for (int x = 1; x <= gameplayers; x++)
+            {
+
+                lf = new Lotofacil(
                 insertedValues(txtTotalNumbers), 15, 18, 25);
 
-            for (int x = 1; x <= insertedValues(txtGames); x++)
-            {
-                lf.playGame();
+                gameListLF.Add(lf.playGame());
             }
-            //Console.WriteLine(Lotofacil.gamePlayed);
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (chkLotofacil.Checked) playLotofacil();
+            Model save = new Model();
+            if (gameListLF != null) save.saveLotoFacil(gameListLF);
+            save.saveValues();
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
@@ -52,7 +59,7 @@ namespace VisaoJogo
                 return Convert.ToInt16(field.Text);
             }catch(Exception ex)
             {
-                existsError = true;
+                //existsError = true;
                 return 1;
             }
         }

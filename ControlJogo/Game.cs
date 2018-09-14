@@ -8,8 +8,7 @@ namespace ConsoleApp1
 {
     public class Game
     {
-        private int[] game;
-        public static List<int[]> gamePlayed;
+        public int[] game;
 
         private int numberListToBet, totalNumbers;
 
@@ -18,11 +17,13 @@ namespace ConsoleApp1
             this.numberListToBet = validateNumbersToBet(numberListToBet, min, max);
             game = new int[this.numberListToBet];
             this.totalNumbers = totalNumbers;
-            gamePlayed = new List<int[]>();
         }
 
-        public void playGame()
+        public int[] playGame()
         {
+
+            Array.Clear(game,0, numberListToBet);
+
             int counter = 0;
             
             while (counter < numberListToBet)
@@ -45,7 +46,9 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine(mensagem);
-            gamePlayed.Add(game);
+
+            return game;
+
         }
 
         private bool existNumberOnGame(int playedNumber)
