@@ -55,13 +55,15 @@ namespace CModelJogo
 
             frontsheet();
 
-            lf();
+            lfFrontSheet();
 
             string fileName = String.Format(@"C:\Users\bhrodrigues\Desktop\File{0}.xlsx", actualDate());
 
             wb.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault);
 
             wb.Close();
+
+            xlsapp.Quit();
         }
 
         public void frontsheet()
@@ -72,11 +74,13 @@ namespace CModelJogo
 
             ws.Move(wb.Worksheets[1]);
 
-            header();
+            headerFrontSheet();
+
+            totalFrontSheet();
 
         }
 
-        private void header()
+        private void headerFrontSheet()
         {
             ws.Cells[1, 1].EntireRow.Font.Bold = true;
             ws.Cells.EntireRow.HorizontalAlignment = 2;
@@ -88,11 +92,19 @@ namespace CModelJogo
             ws.Cells[1, 3].Value = "Total Jogo";
         }
 
-        private void lf()
+        private void lfFrontSheet()
         {
             ws.Cells[2, 1].Value = "Lotofácil";
             ws.Cells[2, 2].Value = lotofacil[0];
             ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
+        }
+        
+        private void totalFrontSheet()
+        {
+            foreach(int count in ws.UsedRange)
+            {
+                Console.WriteLine(ws.Cells[count,1]);
+            }
         }
 
 
