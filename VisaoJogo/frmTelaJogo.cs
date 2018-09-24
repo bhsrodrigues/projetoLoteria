@@ -21,12 +21,12 @@ namespace VisaoJogo
         {
             
             gameListLF = new List <int[]>();
-            int gameplayers = insertedValues(txtGames);
+            int gameplayers = Convert.ToInt16(cboboxGamesLF.SelectedText);
             for (int x = 1; x <= gameplayers; x++)
             {
 
                 lf = new Lotofacil(
-                insertedValues(txtTotalNumbers), 15, 18, 25);
+                Convert.ToInt16(cboboxTotalNumbersLF.SelectedText), 15, 18, 25);
 
                 gameListLF.Add(lf.playGame());
             }
@@ -42,43 +42,33 @@ namespace VisaoJogo
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkLotofacil.Checked) {
-                FieldsControl.ModifyControl(pnlLotofacil, true);
-            }
-            else
-            {
-                FieldsControl.ModifyControl(pnlLotofacil, false);
-            }
-            btnPlay.Enabled = enableButton();
-        }
-
-        private int insertedValues(TextBox field)
-        {
-            try
-            {
-                return Convert.ToInt16(field.Text);
-            }catch(Exception ex)
-            {
-                //existsError = true;
-                return 1;
-            }
+            changeComboStatus(chkLotofacil, pnlLotofacil);
         }
 
         private bool enableButton()
         {
 
             if (chkLotofacil.Checked) return true;
+            if (chkboxMegaSena.Checked) return true;
             return false;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void changeComboStatus(CheckBox check, Panel panel)
         {
-
+            if (check.Checked)
+            {
+                FieldsControl.ModifyControl(panel, true);
+            }
+            else
+            {
+                FieldsControl.ModifyControl(panel, false);
+            }
+            btnPlay.Enabled = enableButton();
         }
 
-        private void frmTelaJogo_Load(object sender, EventArgs e)
+        private void chkboxMegaSena_CheckedChanged(object sender, EventArgs e)
         {
-            cboboxTotalNumbers.SelectedIndex = 0;
+            changeComboStatus(chkboxMegaSena, pnlMegaSena);
         }
     }
 }

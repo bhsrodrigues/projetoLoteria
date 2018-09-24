@@ -19,18 +19,31 @@ namespace VisaoJogo
 
         private static void fieldsControl(Control field, bool enable)
         {
-            if (field is TextBox)
+            if (field is ComboBox)
             {
                 if (enable)
                 {
+                    firstComboItem((ComboBox)field);
                     field.Enabled = enable;
+                    
+;
                 }
                 else
                 {
                     field.Enabled = enable;
-                    field.Text = "";
+                    nullComboItem((ComboBox)field);
                 }
             }
+        }
+
+        private static void firstComboItem(ComboBox item)
+        {
+            item.SelectedIndex = 0;
+        }
+
+        private static void nullComboItem(ComboBox item)
+        {
+            item.SelectedIndex = -1;
         }
     }
 }
