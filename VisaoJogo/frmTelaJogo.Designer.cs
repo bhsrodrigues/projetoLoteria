@@ -36,6 +36,7 @@
             this.chkLotofacil = new System.Windows.Forms.CheckBox();
             this.lblDonzens = new System.Windows.Forms.Label();
             this.lblTotalDraws = new System.Windows.Forms.Label();
+            this.cboboxTotalNumbers = new System.Windows.Forms.ComboBox();
             this.pnlLotofacil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,12 +62,13 @@
             // 
             // pnlLotofacil
             // 
+            this.pnlLotofacil.Controls.Add(this.cboboxTotalNumbers);
             this.pnlLotofacil.Controls.Add(this.txtGames);
             this.pnlLotofacil.Controls.Add(this.txtTotalNumbers);
             this.pnlLotofacil.Controls.Add(this.chkLotofacil);
             this.pnlLotofacil.Location = new System.Drawing.Point(12, 33);
             this.pnlLotofacil.Name = "pnlLotofacil";
-            this.pnlLotofacil.Size = new System.Drawing.Size(308, 36);
+            this.pnlLotofacil.Size = new System.Drawing.Size(481, 45);
             this.pnlLotofacil.TabIndex = 3;
             // 
             // txtGames
@@ -114,11 +116,24 @@
             this.lblTotalDraws.TabIndex = 5;
             this.lblTotalDraws.Text = "Nº Apostas";
             // 
+            // cboboxTotalNumbers
+            // 
+            this.cboboxTotalNumbers.FormattingEnabled = true;
+            this.cboboxTotalNumbers.Items.AddRange(new object[] {
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.cboboxTotalNumbers.Location = new System.Drawing.Point(297, 7);
+            this.cboboxTotalNumbers.Name = "cboboxTotalNumbers";
+            this.cboboxTotalNumbers.Size = new System.Drawing.Size(121, 21);
+            this.cboboxTotalNumbers.TabIndex = 6;
+            // 
             // frmTelaJogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 304);
+            this.ClientSize = new System.Drawing.Size(505, 304);
             this.Controls.Add(this.lblTotalDraws);
             this.Controls.Add(this.lblDonzens);
             this.Controls.Add(this.pnlLotofacil);
@@ -126,6 +141,7 @@
             this.Controls.Add(this.btnPlay);
             this.Name = "frmTelaJogo";
             this.Text = "Gerador de Apostas Lotéricas";
+            this.Load += new System.EventHandler(this.frmTelaJogo_Load);
             this.pnlLotofacil.ResumeLayout(false);
             this.pnlLotofacil.PerformLayout();
             this.ResumeLayout(false);
@@ -143,6 +159,7 @@
         private System.Windows.Forms.CheckBox chkLotofacil;
         private System.Windows.Forms.Label lblDonzens;
         private System.Windows.Forms.Label lblTotalDraws;
+        private System.Windows.Forms.ComboBox cboboxTotalNumbers;
     }
 }
 

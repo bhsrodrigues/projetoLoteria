@@ -71,5 +71,14 @@ namespace VisaoJogo
             return false;
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmTelaJogo_Load(object sender, EventArgs e)
+        {
+            cboboxTotalNumbers.SelectedIndex = 0;
+        }
     }
 }
