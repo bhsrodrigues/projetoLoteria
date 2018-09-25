@@ -50,14 +50,14 @@ namespace CModelJogo
             }
         }
 
-        public void saveValues()
+        public void saveValues(String path)
         {
 
             frontsheet();
 
             lfFrontSheet();
 
-            string fileName = String.Format(@"C:\Users\bhrodrigues\Desktop\File{0}.xlsx", actualDate());
+            string fileName = String.Format(@"{0}\File{1}.xlsx", path,actualDate());
 
             wb.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault);
 
@@ -97,13 +97,13 @@ namespace CModelJogo
             ws.Cells[2, 1].Value = "Lotofácil";
             ws.Cells[2, 2].Value = lotofacil[0];
             ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
+            ws.Cells[2, 3].NumberFormat = "R$ #.00";
         }
         
         private void totalFrontSheet()
         {
-            foreach(int count in ws.UsedRange)
-            {
-                Console.WriteLine(ws.Cells[count,1]);
+            for (int count = 1; count <= ws.UsedRange.Rows.Count; count++){
+                Console.WriteLine(ws.Cells[count,3].Value);
             }
         }
 

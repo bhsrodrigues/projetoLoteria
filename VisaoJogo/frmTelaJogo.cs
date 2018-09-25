@@ -21,12 +21,12 @@ namespace VisaoJogo
         {
             
             gameListLF = new List <int[]>();
-            int gameplayers = Convert.ToInt16(cboboxGamesLF.SelectedText);
+            int gameplayers = Convert.ToInt16(cboboxGamesLF.Text);
             for (int x = 1; x <= gameplayers; x++)
             {
 
                 lf = new Lotofacil(
-                Convert.ToInt16(cboboxTotalNumbersLF.SelectedText), 15, 18, 25);
+                Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25);
 
                 gameListLF.Add(lf.playGame());
             }
@@ -37,7 +37,7 @@ namespace VisaoJogo
             if (chkLotofacil.Checked) playLotofacil();
             Model save = new Model();
             if (gameListLF != null) save.saveLotoFacil(gameListLF);
-            save.saveValues();
+            save.saveValues(txtPath.Text);
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
@@ -69,6 +69,17 @@ namespace VisaoJogo
         private void chkboxMegaSena_CheckedChanged(object sender, EventArgs e)
         {
             changeComboStatus(chkboxMegaSena, pnlMegaSena);
+        }
+
+        private void cboboxTotalNumbersLF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(cboboxGamesLF.Text);
+        }
+
+        private void btnChoosePath_Click(object sender, EventArgs e)
+        {
+            getFolderToSave.ShowDialog();
+            txtPath.Text = getFolderToSave.SelectedPath;
         }
     }
 }
