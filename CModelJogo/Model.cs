@@ -97,7 +97,7 @@ namespace CModelJogo
             ws.Cells[2, 1].Value = "Lotofácil";
             ws.Cells[2, 2].Value = lotofacil[0];
             ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
-            ws.Cells[2, 3].NumberFormat = "R$ #.00";
+            ws.Cells[2, 3].NumberFormat = "R$ #.###,##";
         }
         
         private void totalFrontSheet()

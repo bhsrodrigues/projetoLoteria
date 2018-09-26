@@ -43,8 +43,13 @@
             this.txtPath = new System.Windows.Forms.TextBox();
             this.getFolderToSave = new System.Windows.Forms.FolderBrowserDialog();
             this.btnChoosePath = new System.Windows.Forms.Button();
+            this.pnlDuplaSena = new System.Windows.Forms.Panel();
+            this.cboboxGamesDS = new System.Windows.Forms.ComboBox();
+            this.cboboxTotalNumbersDS = new System.Windows.Forms.ComboBox();
+            this.chkboxDuplaSena = new System.Windows.Forms.CheckBox();
             this.pnlLotofacil.SuspendLayout();
             this.pnlMegaSena.SuspendLayout();
+            this.pnlDuplaSena.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -72,7 +77,7 @@
             this.pnlLotofacil.Controls.Add(this.cboboxGamesLF);
             this.pnlLotofacil.Controls.Add(this.cboboxTotalNumbersLF);
             this.pnlLotofacil.Controls.Add(this.chkLotofacil);
-            this.pnlLotofacil.Location = new System.Drawing.Point(12, 33);
+            this.pnlLotofacil.Location = new System.Drawing.Point(12, 80);
             this.pnlLotofacil.Name = "pnlLotofacil";
             this.pnlLotofacil.Size = new System.Drawing.Size(311, 36);
             this.pnlLotofacil.TabIndex = 3;
@@ -158,7 +163,7 @@
             this.pnlMegaSena.Controls.Add(this.cboboxGamesMS);
             this.pnlMegaSena.Controls.Add(this.cboboxTotalNumbersMS);
             this.pnlMegaSena.Controls.Add(this.chkboxMegaSena);
-            this.pnlMegaSena.Location = new System.Drawing.Point(12, 75);
+            this.pnlMegaSena.Location = new System.Drawing.Point(12, 122);
             this.pnlMegaSena.Name = "pnlMegaSena";
             this.pnlMegaSena.Size = new System.Drawing.Size(311, 36);
             this.pnlMegaSena.TabIndex = 6;
@@ -230,6 +235,7 @@
             // 
             this.txtPath.Location = new System.Drawing.Point(12, 232);
             this.txtPath.Name = "txtPath";
+            this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(277, 20);
             this.txtPath.TabIndex = 7;
             this.txtPath.Click += new System.EventHandler(this.btnChoosePath_Click);
@@ -244,11 +250,84 @@
             this.btnChoosePath.UseVisualStyleBackColor = true;
             this.btnChoosePath.Click += new System.EventHandler(this.btnChoosePath_Click);
             // 
+            // pnlDuplaSena
+            // 
+            this.pnlDuplaSena.Controls.Add(this.cboboxGamesDS);
+            this.pnlDuplaSena.Controls.Add(this.cboboxTotalNumbersDS);
+            this.pnlDuplaSena.Controls.Add(this.chkboxDuplaSena);
+            this.pnlDuplaSena.Location = new System.Drawing.Point(12, 38);
+            this.pnlDuplaSena.Name = "pnlDuplaSena";
+            this.pnlDuplaSena.Size = new System.Drawing.Size(311, 36);
+            this.pnlDuplaSena.TabIndex = 9;
+            // 
+            // cboboxGamesDS
+            // 
+            this.cboboxGamesDS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxGamesDS.Enabled = false;
+            this.cboboxGamesDS.FormattingEnabled = true;
+            this.cboboxGamesDS.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cboboxGamesDS.Location = new System.Drawing.Point(230, 6);
+            this.cboboxGamesDS.Name = "cboboxGamesDS";
+            this.cboboxGamesDS.Size = new System.Drawing.Size(69, 21);
+            this.cboboxGamesDS.TabIndex = 7;
+            // 
+            // cboboxTotalNumbersDS
+            // 
+            this.cboboxTotalNumbersDS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxTotalNumbersDS.Enabled = false;
+            this.cboboxTotalNumbersDS.FormattingEnabled = true;
+            this.cboboxTotalNumbersDS.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.cboboxTotalNumbersDS.Location = new System.Drawing.Point(103, 6);
+            this.cboboxTotalNumbersDS.Name = "cboboxTotalNumbersDS";
+            this.cboboxTotalNumbersDS.Size = new System.Drawing.Size(69, 21);
+            this.cboboxTotalNumbersDS.TabIndex = 6;
+            // 
+            // chkboxDuplaSena
+            // 
+            this.chkboxDuplaSena.AutoSize = true;
+            this.chkboxDuplaSena.Location = new System.Drawing.Point(13, 10);
+            this.chkboxDuplaSena.Name = "chkboxDuplaSena";
+            this.chkboxDuplaSena.Size = new System.Drawing.Size(81, 17);
+            this.chkboxDuplaSena.TabIndex = 3;
+            this.chkboxDuplaSena.Text = "Mega-Sena";
+            this.chkboxDuplaSena.UseVisualStyleBackColor = true;
+            // 
             // frmTelaJogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 304);
+            this.Controls.Add(this.pnlDuplaSena);
             this.Controls.Add(this.btnChoosePath);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.pnlMegaSena);
@@ -263,6 +342,8 @@
             this.pnlLotofacil.PerformLayout();
             this.pnlMegaSena.ResumeLayout(false);
             this.pnlMegaSena.PerformLayout();
+            this.pnlDuplaSena.ResumeLayout(false);
+            this.pnlDuplaSena.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +366,10 @@
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.FolderBrowserDialog getFolderToSave;
         private System.Windows.Forms.Button btnChoosePath;
+        private System.Windows.Forms.Panel pnlDuplaSena;
+        private System.Windows.Forms.ComboBox cboboxGamesDS;
+        private System.Windows.Forms.ComboBox cboboxTotalNumbersDS;
+        private System.Windows.Forms.CheckBox chkboxDuplaSena;
     }
 }
 
