@@ -47,15 +47,32 @@
             this.cboboxGamesDS = new System.Windows.Forms.ComboBox();
             this.cboboxTotalNumbersDS = new System.Windows.Forms.ComboBox();
             this.chkboxDuplaSena = new System.Windows.Forms.CheckBox();
+            this.pnlQuina = new System.Windows.Forms.Panel();
+            this.cboboxGamesQ = new System.Windows.Forms.ComboBox();
+            this.cboboxTotalNumbersQ = new System.Windows.Forms.ComboBox();
+            this.chkboxQuina = new System.Windows.Forms.CheckBox();
+            this.lblOthers = new System.Windows.Forms.Label();
+            this.pnlLotomania = new System.Windows.Forms.Panel();
+            this.cboboxGamesLM = new System.Windows.Forms.ComboBox();
+            this.cboboxTotalNumbersLM = new System.Windows.Forms.ComboBox();
+            this.chkboxLotomania = new System.Windows.Forms.CheckBox();
+            this.chkboxUseUnsortedNumber = new System.Windows.Forms.CheckBox();
+            this.pnlTimemania = new System.Windows.Forms.Panel();
+            this.cboboxGamesTM = new System.Windows.Forms.ComboBox();
+            this.cboboxTotalNumbersTM = new System.Windows.Forms.ComboBox();
+            this.chkboxTimemania = new System.Windows.Forms.CheckBox();
             this.pnlLotofacil.SuspendLayout();
             this.pnlMegaSena.SuspendLayout();
             this.pnlDuplaSena.SuspendLayout();
+            this.pnlQuina.SuspendLayout();
+            this.pnlLotomania.SuspendLayout();
+            this.pnlTimemania.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
             // 
             this.btnPlay.Enabled = false;
-            this.btnPlay.Location = new System.Drawing.Point(123, 269);
+            this.btnPlay.Location = new System.Drawing.Point(347, 342);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(75, 23);
             this.btnPlay.TabIndex = 0;
@@ -79,7 +96,7 @@
             this.pnlLotofacil.Controls.Add(this.chkLotofacil);
             this.pnlLotofacil.Location = new System.Drawing.Point(12, 80);
             this.pnlLotofacil.Name = "pnlLotofacil";
-            this.pnlLotofacil.Size = new System.Drawing.Size(311, 36);
+            this.pnlLotofacil.Size = new System.Drawing.Size(410, 36);
             this.pnlLotofacil.TabIndex = 3;
             // 
             // cboboxGamesLF
@@ -108,7 +125,7 @@
             "18",
             "19",
             "20"});
-            this.cboboxGamesLF.Location = new System.Drawing.Point(230, 6);
+            this.cboboxGamesLF.Location = new System.Drawing.Point(212, 6);
             this.cboboxGamesLF.Name = "cboboxGamesLF";
             this.cboboxGamesLF.Size = new System.Drawing.Size(69, 21);
             this.cboboxGamesLF.TabIndex = 7;
@@ -152,7 +169,7 @@
             // lblTotalDraws
             // 
             this.lblTotalDraws.AutoSize = true;
-            this.lblTotalDraws.Location = new System.Drawing.Point(239, 14);
+            this.lblTotalDraws.Location = new System.Drawing.Point(221, 14);
             this.lblTotalDraws.Name = "lblTotalDraws";
             this.lblTotalDraws.Size = new System.Drawing.Size(60, 13);
             this.lblTotalDraws.TabIndex = 5;
@@ -163,9 +180,9 @@
             this.pnlMegaSena.Controls.Add(this.cboboxGamesMS);
             this.pnlMegaSena.Controls.Add(this.cboboxTotalNumbersMS);
             this.pnlMegaSena.Controls.Add(this.chkboxMegaSena);
-            this.pnlMegaSena.Location = new System.Drawing.Point(12, 122);
+            this.pnlMegaSena.Location = new System.Drawing.Point(12, 165);
             this.pnlMegaSena.Name = "pnlMegaSena";
-            this.pnlMegaSena.Size = new System.Drawing.Size(311, 36);
+            this.pnlMegaSena.Size = new System.Drawing.Size(410, 36);
             this.pnlMegaSena.TabIndex = 6;
             // 
             // cboboxGamesMS
@@ -194,7 +211,7 @@
             "18",
             "19",
             "20"});
-            this.cboboxGamesMS.Location = new System.Drawing.Point(230, 6);
+            this.cboboxGamesMS.Location = new System.Drawing.Point(212, 6);
             this.cboboxGamesMS.Name = "cboboxGamesMS";
             this.cboboxGamesMS.Size = new System.Drawing.Size(69, 21);
             this.cboboxGamesMS.TabIndex = 7;
@@ -233,16 +250,16 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(12, 232);
+            this.txtPath.Location = new System.Drawing.Point(12, 342);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(277, 20);
+            this.txtPath.Size = new System.Drawing.Size(301, 20);
             this.txtPath.TabIndex = 7;
             this.txtPath.Click += new System.EventHandler(this.btnChoosePath_Click);
             // 
             // btnChoosePath
             // 
-            this.btnChoosePath.Location = new System.Drawing.Point(289, 231);
+            this.btnChoosePath.Location = new System.Drawing.Point(311, 341);
             this.btnChoosePath.Name = "btnChoosePath";
             this.btnChoosePath.Size = new System.Drawing.Size(32, 23);
             this.btnChoosePath.TabIndex = 8;
@@ -257,7 +274,7 @@
             this.pnlDuplaSena.Controls.Add(this.chkboxDuplaSena);
             this.pnlDuplaSena.Location = new System.Drawing.Point(12, 38);
             this.pnlDuplaSena.Name = "pnlDuplaSena";
-            this.pnlDuplaSena.Size = new System.Drawing.Size(311, 36);
+            this.pnlDuplaSena.Size = new System.Drawing.Size(410, 36);
             this.pnlDuplaSena.TabIndex = 9;
             // 
             // cboboxGamesDS
@@ -286,7 +303,7 @@
             "18",
             "19",
             "20"});
-            this.cboboxGamesDS.Location = new System.Drawing.Point(230, 6);
+            this.cboboxGamesDS.Location = new System.Drawing.Point(212, 6);
             this.cboboxGamesDS.Name = "cboboxGamesDS";
             this.cboboxGamesDS.Size = new System.Drawing.Size(69, 21);
             this.cboboxGamesDS.TabIndex = 7;
@@ -317,16 +334,239 @@
             this.chkboxDuplaSena.AutoSize = true;
             this.chkboxDuplaSena.Location = new System.Drawing.Point(13, 10);
             this.chkboxDuplaSena.Name = "chkboxDuplaSena";
-            this.chkboxDuplaSena.Size = new System.Drawing.Size(81, 17);
+            this.chkboxDuplaSena.Size = new System.Drawing.Size(82, 17);
             this.chkboxDuplaSena.TabIndex = 3;
-            this.chkboxDuplaSena.Text = "Mega-Sena";
+            this.chkboxDuplaSena.Text = "Dupla-Sena";
             this.chkboxDuplaSena.UseVisualStyleBackColor = true;
+            // 
+            // pnlQuina
+            // 
+            this.pnlQuina.Controls.Add(this.cboboxGamesQ);
+            this.pnlQuina.Controls.Add(this.cboboxTotalNumbersQ);
+            this.pnlQuina.Controls.Add(this.chkboxQuina);
+            this.pnlQuina.Location = new System.Drawing.Point(12, 207);
+            this.pnlQuina.Name = "pnlQuina";
+            this.pnlQuina.Size = new System.Drawing.Size(410, 36);
+            this.pnlQuina.TabIndex = 10;
+            // 
+            // cboboxGamesQ
+            // 
+            this.cboboxGamesQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxGamesQ.Enabled = false;
+            this.cboboxGamesQ.FormattingEnabled = true;
+            this.cboboxGamesQ.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cboboxGamesQ.Location = new System.Drawing.Point(212, 6);
+            this.cboboxGamesQ.Name = "cboboxGamesQ";
+            this.cboboxGamesQ.Size = new System.Drawing.Size(69, 21);
+            this.cboboxGamesQ.TabIndex = 7;
+            // 
+            // cboboxTotalNumbersQ
+            // 
+            this.cboboxTotalNumbersQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxTotalNumbersQ.Enabled = false;
+            this.cboboxTotalNumbersQ.FormattingEnabled = true;
+            this.cboboxTotalNumbersQ.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.cboboxTotalNumbersQ.Location = new System.Drawing.Point(103, 6);
+            this.cboboxTotalNumbersQ.Name = "cboboxTotalNumbersQ";
+            this.cboboxTotalNumbersQ.Size = new System.Drawing.Size(69, 21);
+            this.cboboxTotalNumbersQ.TabIndex = 6;
+            // 
+            // chkboxQuina
+            // 
+            this.chkboxQuina.AutoSize = true;
+            this.chkboxQuina.Location = new System.Drawing.Point(13, 10);
+            this.chkboxQuina.Name = "chkboxQuina";
+            this.chkboxQuina.Size = new System.Drawing.Size(54, 17);
+            this.chkboxQuina.TabIndex = 3;
+            this.chkboxQuina.Text = "Quina";
+            this.chkboxQuina.UseVisualStyleBackColor = true;
+            // 
+            // lblOthers
+            // 
+            this.lblOthers.AutoSize = true;
+            this.lblOthers.Location = new System.Drawing.Point(324, 14);
+            this.lblOthers.Name = "lblOthers";
+            this.lblOthers.Size = new System.Drawing.Size(38, 13);
+            this.lblOthers.TabIndex = 11;
+            this.lblOthers.Text = "Outros";
+            // 
+            // pnlLotomania
+            // 
+            this.pnlLotomania.Controls.Add(this.chkboxUseUnsortedNumber);
+            this.pnlLotomania.Controls.Add(this.cboboxGamesLM);
+            this.pnlLotomania.Controls.Add(this.cboboxTotalNumbersLM);
+            this.pnlLotomania.Controls.Add(this.chkboxLotomania);
+            this.pnlLotomania.Location = new System.Drawing.Point(12, 122);
+            this.pnlLotomania.Name = "pnlLotomania";
+            this.pnlLotomania.Size = new System.Drawing.Size(410, 36);
+            this.pnlLotomania.TabIndex = 12;
+            // 
+            // cboboxGamesLM
+            // 
+            this.cboboxGamesLM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxGamesLM.Enabled = false;
+            this.cboboxGamesLM.FormattingEnabled = true;
+            this.cboboxGamesLM.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cboboxGamesLM.Location = new System.Drawing.Point(212, 6);
+            this.cboboxGamesLM.Name = "cboboxGamesLM";
+            this.cboboxGamesLM.Size = new System.Drawing.Size(69, 21);
+            this.cboboxGamesLM.TabIndex = 7;
+            // 
+            // cboboxTotalNumbersLM
+            // 
+            this.cboboxTotalNumbersLM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxTotalNumbersLM.Enabled = false;
+            this.cboboxTotalNumbersLM.FormattingEnabled = true;
+            this.cboboxTotalNumbersLM.Items.AddRange(new object[] {
+            "50"});
+            this.cboboxTotalNumbersLM.Location = new System.Drawing.Point(103, 6);
+            this.cboboxTotalNumbersLM.Name = "cboboxTotalNumbersLM";
+            this.cboboxTotalNumbersLM.Size = new System.Drawing.Size(69, 21);
+            this.cboboxTotalNumbersLM.TabIndex = 6;
+            // 
+            // chkboxLotomania
+            // 
+            this.chkboxLotomania.AutoSize = true;
+            this.chkboxLotomania.Location = new System.Drawing.Point(13, 10);
+            this.chkboxLotomania.Name = "chkboxLotomania";
+            this.chkboxLotomania.Size = new System.Drawing.Size(75, 17);
+            this.chkboxLotomania.TabIndex = 3;
+            this.chkboxLotomania.Text = "Lotomania";
+            this.chkboxLotomania.UseVisualStyleBackColor = true;
+            // 
+            // chkboxUseUnsortedNumber
+            // 
+            this.chkboxUseUnsortedNumber.AutoSize = true;
+            this.chkboxUseUnsortedNumber.Location = new System.Drawing.Point(308, 10);
+            this.chkboxUseUnsortedNumber.Name = "chkboxUseUnsortedNumber";
+            this.chkboxUseUnsortedNumber.Size = new System.Drawing.Size(100, 17);
+            this.chkboxUseUnsortedNumber.TabIndex = 8;
+            this.chkboxUseUnsortedNumber.Text = "Aposta Espelho";
+            this.chkboxUseUnsortedNumber.UseVisualStyleBackColor = true;
+            // 
+            // pnlTimemania
+            // 
+            this.pnlTimemania.Controls.Add(this.cboboxGamesTM);
+            this.pnlTimemania.Controls.Add(this.cboboxTotalNumbersTM);
+            this.pnlTimemania.Controls.Add(this.chkboxTimemania);
+            this.pnlTimemania.Location = new System.Drawing.Point(12, 249);
+            this.pnlTimemania.Name = "pnlTimemania";
+            this.pnlTimemania.Size = new System.Drawing.Size(410, 36);
+            this.pnlTimemania.TabIndex = 13;
+            // 
+            // cboboxGamesTM
+            // 
+            this.cboboxGamesTM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxGamesTM.Enabled = false;
+            this.cboboxGamesTM.FormattingEnabled = true;
+            this.cboboxGamesTM.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cboboxGamesTM.Location = new System.Drawing.Point(212, 6);
+            this.cboboxGamesTM.Name = "cboboxGamesTM";
+            this.cboboxGamesTM.Size = new System.Drawing.Size(69, 21);
+            this.cboboxGamesTM.TabIndex = 7;
+            // 
+            // cboboxTotalNumbersTM
+            // 
+            this.cboboxTotalNumbersTM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboboxTotalNumbersTM.Enabled = false;
+            this.cboboxTotalNumbersTM.FormattingEnabled = true;
+            this.cboboxTotalNumbersTM.Items.AddRange(new object[] {
+            "10"});
+            this.cboboxTotalNumbersTM.Location = new System.Drawing.Point(103, 6);
+            this.cboboxTotalNumbersTM.Name = "cboboxTotalNumbersTM";
+            this.cboboxTotalNumbersTM.Size = new System.Drawing.Size(69, 21);
+            this.cboboxTotalNumbersTM.TabIndex = 6;
+            // 
+            // chkboxTimemania
+            // 
+            this.chkboxTimemania.AutoSize = true;
+            this.chkboxTimemania.Location = new System.Drawing.Point(13, 10);
+            this.chkboxTimemania.Name = "chkboxTimemania";
+            this.chkboxTimemania.Size = new System.Drawing.Size(77, 17);
+            this.chkboxTimemania.TabIndex = 3;
+            this.chkboxTimemania.Text = "Timemania";
+            this.chkboxTimemania.UseVisualStyleBackColor = true;
             // 
             // frmTelaJogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 304);
+            this.ClientSize = new System.Drawing.Size(434, 374);
+            this.Controls.Add(this.pnlTimemania);
+            this.Controls.Add(this.pnlLotomania);
+            this.Controls.Add(this.lblOthers);
+            this.Controls.Add(this.pnlQuina);
             this.Controls.Add(this.pnlDuplaSena);
             this.Controls.Add(this.btnChoosePath);
             this.Controls.Add(this.txtPath);
@@ -344,6 +584,12 @@
             this.pnlMegaSena.PerformLayout();
             this.pnlDuplaSena.ResumeLayout(false);
             this.pnlDuplaSena.PerformLayout();
+            this.pnlQuina.ResumeLayout(false);
+            this.pnlQuina.PerformLayout();
+            this.pnlLotomania.ResumeLayout(false);
+            this.pnlLotomania.PerformLayout();
+            this.pnlTimemania.ResumeLayout(false);
+            this.pnlTimemania.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,6 +616,20 @@
         private System.Windows.Forms.ComboBox cboboxGamesDS;
         private System.Windows.Forms.ComboBox cboboxTotalNumbersDS;
         private System.Windows.Forms.CheckBox chkboxDuplaSena;
+        private System.Windows.Forms.Panel pnlQuina;
+        private System.Windows.Forms.ComboBox cboboxGamesQ;
+        private System.Windows.Forms.ComboBox cboboxTotalNumbersQ;
+        private System.Windows.Forms.CheckBox chkboxQuina;
+        private System.Windows.Forms.Label lblOthers;
+        private System.Windows.Forms.Panel pnlLotomania;
+        private System.Windows.Forms.CheckBox chkboxUseUnsortedNumber;
+        private System.Windows.Forms.ComboBox cboboxGamesLM;
+        private System.Windows.Forms.ComboBox cboboxTotalNumbersLM;
+        private System.Windows.Forms.CheckBox chkboxLotomania;
+        private System.Windows.Forms.Panel pnlTimemania;
+        private System.Windows.Forms.ComboBox cboboxGamesTM;
+        private System.Windows.Forms.ComboBox cboboxTotalNumbersTM;
+        private System.Windows.Forms.CheckBox chkboxTimemania;
     }
 }
 
