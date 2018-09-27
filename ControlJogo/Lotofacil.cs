@@ -10,8 +10,8 @@ namespace ControlJogo
     public class Lotofacil : Game
     {
 
-        public Lotofacil(int numberListToBet, int min, int max, int totalNumbers) : 
-            base(numberListToBet, min, max, totalNumbers)
+        public Lotofacil() : 
+            base()
         {
 
         }

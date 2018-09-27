@@ -9,18 +9,16 @@ namespace ConsoleApp1
     public class Game
     {
         public int[] game;
+        public List<int[]> allGames;
 
         private int numberListToBet, totalNumbers;
-
-        public Game(int numberListToBet, int min, int max, int totalNumbers)
+        
+        public void playGame(int numberListToBet, int min, int max, int totalNumbers,
+            int totalGames)
         {
-            this.numberListToBet = validateNumbersToBet(numberListToBet, min, max);
+
             game = new int[this.numberListToBet];
             this.totalNumbers = totalNumbers;
-        }
-
-        public int[] playGame()
-        {
 
             Array.Clear(game,0, numberListToBet);
 
@@ -47,8 +45,17 @@ namespace ConsoleApp1
 
             Console.WriteLine(mensagem);
 
-            return game;
+            //return game;
 
+        }
+
+        public int[] getGame(int numberListToBet, int min, int max, int totalNumbers,
+            int totalGames)
+        {
+
+            int[] tempGame;
+
+            return 
         }
 
         private bool existNumberOnGame(int playedNumber)
@@ -73,20 +80,5 @@ namespace ConsoleApp1
             return tempNumber;
         }
 
-        private int validateNumbersToBet(int numbersToBet, int min, int max)
-        {
-            if (numbersToBet < min)
-            {
-                return min;
-            }
-            else if (numbersToBet > max)
-            {
-                return max;
-            }
-            else
-            {
-                return numbersToBet;
-            }
-        }
     }
 }

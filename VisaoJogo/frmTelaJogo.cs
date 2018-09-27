@@ -19,17 +19,11 @@ namespace VisaoJogo
 
         private void playLotofacil()
         {
-            
-            gameListLF = new List <int[]>();
-            int gameplayers = Convert.ToInt16(cboboxGamesLF.Text);
-            for (int x = 1; x <= gameplayers; x++)
-            {
 
-                lf = new Lotofacil(
-                Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25);
+            Lotofacil lf = new Lotofacil();
 
-                gameListLF.Add(lf.playGame());
-            }
+            lf.playGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
+                Convert.ToInt16(cboboxGamesLF.Text));
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
