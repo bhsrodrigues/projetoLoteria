@@ -9,59 +9,45 @@ namespace CModelJogo
 
         public static string FileName;
 
-        List<double> lotofacil;
+        private static List<double>[] allGamesValues;
 
-        public Excel.Application xlsapp;
+        private Excel.Application xlsapp;
 
-        public Excel.Workbook wb;
+        private Excel.Workbook wb;
 
-        public Excel.Worksheet ws;
+        private Excel.Worksheet ws;
         
         public Model() {
 
             xlsapp = new Excel.Application();
 
             wb = xlsapp.Workbooks.Add();
+
+            allGamesValues = new List<double>[7];
             
         }
 
-        public void saveLotoFacil(List<int[]> gameList)
+        public void saveGame(List<int[]> gameList, string gameName)
         {
-            ws = wb.Worksheets.Add();
-
-            ws.Name = "Lotofacil";
-
-            lotofacil = new List<double>() { gameList.Count, 2.00};
-            
-
-            int row = 1;
-
-            foreach (int[] item in gameList)
-            {
-                var column = 1;
-                foreach (int value in item)
-                {
-                    ws.Cells[row, column].Value = Convert.ToString(value);
-                    column++;
-                }
-                row++;
+            if (gameName.Equals("Lotofacil")) {
+                allGamesValues[3] = LotofacilModel.saveLotoFacil(wb, ws, gameList);
             }
         }
 
-        public void saveValues(List<int[]> gameList, string gameName)
+        public void saveValues()
         {
+
+            //if (gameName.Equals("Lotofacil"))
+            //{
+            //    saveLotoFacil(gameList);
+            //}
+
+            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
+            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
 
             frontsheet();
 
             lfFrontSheet();
-
-            if (gameName.Equals("Lotofacil"))
-            {
-                saveLotoFacil(gameList);
-            }
-
-            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
-            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
 
             wb.Close();
 
@@ -99,6 +85,9 @@ namespace CModelJogo
             ws.Cells[2, 1].Value = "Dia de Sorte";
             ws.Cells[3, 1].Value = "Dupla-Sena";
             ws.Cells[4, 1].Value = "Lotofácil";
+            ws.Cells[4, 2].Value = (int) allGamesValues[3][0];
+            ws.Cells[4, 3].Value = allGamesValues[3][1].ToString();
+            ws.Cells[4, 3].NumberFormat = "R$ #.###,##";
             ws.Cells[5, 1].Value = "Lotomania";
             ws.Cells[6, 1].Value = "Mega-Sena";
             ws.Cells[7, 1].Value = "Quina";

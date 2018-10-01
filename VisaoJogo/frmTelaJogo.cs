@@ -9,10 +9,7 @@ namespace VisaoJogo
 {
     public partial class frmTelaJogo : Form
     {
-        private Game lf;
-        private List<int[]> gameListLF;
-
-        public frmTelaJogo()
+                public frmTelaJogo()
         {
             InitializeComponent();
         }
@@ -30,8 +27,8 @@ namespace VisaoJogo
         {
             Model.FileName = txtPath.Text;
             if (chkLotofacil.Checked) playLotofacil();
-            Model save = new Model();
-            if (gameListLF != null) save.saveLotoFacil(gameListLF);
+            /*Model save = new Model();
+            if (gameListLF != null) save.saveLotoFacil(gameListLF);*/
             
         }
 

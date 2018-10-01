@@ -18,11 +18,12 @@ namespace ConsoleApp1
             int totalGames, string gameName)
         {
             allGames = new List<int[]>();
-            game = new int[numberListToBet];
+            
 
             for (int startGame = 0; startGame < totalGames; startGame++)
             {
-                
+                game = new int[numberListToBet];
+
                 this.totalNumbers = totalNumbers;
 
                 int counter = 0;
@@ -40,14 +41,13 @@ namespace ConsoleApp1
                 Array.Sort(game);
 
                 allGames.Add(game);
-
-                Array.Clear(game, 0, numberListToBet);
             }
 
             
 
             Model mdl = new Model();
-            mdl.saveValues(allGames, gameName);
+            mdl.saveGame(allGames, gameName);
+            mdl.saveValues();
         }
         
 
