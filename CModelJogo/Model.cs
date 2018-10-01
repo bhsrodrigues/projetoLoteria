@@ -1,15 +1,13 @@
-﻿using ConsoleApp1;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CModelJogo
 {
     public class Model
     {
+
+        public static string FileName;
 
         List<double> lotofacil;
 
@@ -50,16 +48,20 @@ namespace CModelJogo
             }
         }
 
-        public void saveValues(String path)
+        public void saveValues(List<int[]> gameList, string gameName)
         {
 
             frontsheet();
 
             lfFrontSheet();
 
-            string fileName = String.Format(@"{0}\File{1}.xlsx", path,actualDate());
+            if (gameName.Equals("Lotofacil"))
+            {
+                saveLotoFacil(gameList);
+            }
 
-            wb.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault);
+            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
+            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
 
             wb.Close();
 
@@ -94,17 +96,22 @@ namespace CModelJogo
 
         private void lfFrontSheet()
         {
+            ws.Cells[2, 1].Value = "Dia de Sorte";
+            ws.Cells[3, 1].Value = "Dupla-Sena";
+            ws.Cells[4, 1].Value = "Lotofácil";
+            ws.Cells[5, 1].Value = "Lotomania";
+            ws.Cells[6, 1].Value = "Mega-Sena";
+            ws.Cells[7, 1].Value = "Quina";
+            ws.Cells[8, 1].Value = "Timemania";
             ws.Cells[2, 1].Value = "Lotofácil";
-            ws.Cells[2, 2].Value = lotofacil[0];
-            ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
-            ws.Cells[2, 3].NumberFormat = "R$ #.###,##";
+            //ws.Cells[2, 2].Value = lotofacil[0];
+            //ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
+            //ws.Cells[2, 3].NumberFormat = "R$ #.###,##";
         }
         
-        private void totalFrontSheet()
+        private int totalFrontSheet()
         {
-            for (int count = 1; count <= ws.UsedRange.Rows.Count; count++){
-                Console.WriteLine(ws.Cells[count,3].Value);
-            }
+            return ws.UsedRange.Rows.Count;
         }
 
 

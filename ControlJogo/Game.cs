@@ -3,60 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CModelJogo;
 
 namespace ConsoleApp1
 {
     public class Game
     {
         public int[] game;
-        public List<int[]> allGames;
+        private List<int[]> allGames;
 
-        private int numberListToBet, totalNumbers;
+        private int totalNumbers;
         
         public void playGame(int numberListToBet, int min, int max, int totalNumbers,
-            int totalGames)
+            int totalGames, string gameName)
         {
+            allGames = new List<int[]>();
+            game = new int[numberListToBet];
 
-            game = new int[this.numberListToBet];
-            this.totalNumbers = totalNumbers;
-
-            Array.Clear(game,0, numberListToBet);
-
-            int counter = 0;
-            
-            while (counter < numberListToBet)
+            for (int startGame = 0; startGame < totalGames; startGame++)
             {
-                var newNumber = getNumber();
-                if (!existNumberOnGame(newNumber))
+                
+                this.totalNumbers = totalNumbers;
+
+                int counter = 0;
+
+                while (counter < numberListToBet)
                 {
-                    game[counter] = newNumber;
-                    counter++;
+                    var newNumber = getNumber();
+                    if (!existNumberOnGame(newNumber))
+                    {
+                        game[counter] = newNumber;
+                        counter++;
+                    }
                 }
+
+                Array.Sort(game);
+
+                allGames.Add(game);
+
+                Array.Clear(game, 0, numberListToBet);
             }
 
-            Array.Sort(game);
+            
 
-            var mensagem = "";
-
-            foreach(int t in game)
-            {
-                mensagem += String.Format("{0};",t);
-            }
-
-            Console.WriteLine(mensagem);
-
-            //return game;
-
+            Model mdl = new Model();
+            mdl.saveValues(allGames, gameName);
         }
-
-        public int[] getGame(int numberListToBet, int min, int max, int totalNumbers,
-            int totalGames)
-        {
-
-            int[] tempGame;
-
-            return 
-        }
+        
 
         private bool existNumberOnGame(int playedNumber)
         {

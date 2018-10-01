@@ -23,15 +23,16 @@ namespace VisaoJogo
             Lotofacil lf = new Lotofacil();
 
             lf.playGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
-                Convert.ToInt16(cboboxGamesLF.Text));
+                Convert.ToInt16(cboboxGamesLF.Text), "Lotofacil");
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            Model.FileName = txtPath.Text;
             if (chkLotofacil.Checked) playLotofacil();
             Model save = new Model();
             if (gameListLF != null) save.saveLotoFacil(gameListLF);
-            save.saveValues(txtPath.Text);
+            
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
