@@ -42,16 +42,20 @@ namespace CModelJogo
             //    saveLotoFacil(gameList);
             //}
 
-            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
-            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
-
             frontsheet();
 
             lfFrontSheet();
 
+            xlsapp.DisplayAlerts = false;
+
+            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
+            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
+
+
             wb.Close();
 
             xlsapp.Quit();
+
         }
 
         public void frontsheet()
@@ -86,8 +90,8 @@ namespace CModelJogo
             ws.Cells[3, 1].Value = "Dupla-Sena";
             ws.Cells[4, 1].Value = "Lotofácil";
             ws.Cells[4, 2].Value = (int) allGamesValues[3][0];
-            ws.Cells[4, 3].Value = allGamesValues[3][1].ToString();
-            ws.Cells[4, 3].NumberFormat = "R$ #.###,##";
+            ws.Cells[4, 3].Value = ((int)allGamesValues[3][0] * allGamesValues[3][1]).ToString();
+            ws.Cells[4, 3].NumberFormat = "R$ #.###.###,00";
             ws.Cells[5, 1].Value = "Lotomania";
             ws.Cells[6, 1].Value = "Mega-Sena";
             ws.Cells[7, 1].Value = "Quina";
