@@ -53,10 +53,10 @@
             this.chkboxQuina = new System.Windows.Forms.CheckBox();
             this.lblOthers = new System.Windows.Forms.Label();
             this.pnlLotomania = new System.Windows.Forms.Panel();
+            this.chkboxUseUnsortedNumber = new System.Windows.Forms.CheckBox();
             this.cboboxGamesLM = new System.Windows.Forms.ComboBox();
             this.cboboxTotalNumbersLM = new System.Windows.Forms.ComboBox();
             this.chkboxLotomania = new System.Windows.Forms.CheckBox();
-            this.chkboxUseUnsortedNumber = new System.Windows.Forms.CheckBox();
             this.pnlTimemania = new System.Windows.Forms.Panel();
             this.cboboxGamesTM = new System.Windows.Forms.ComboBox();
             this.cboboxTotalNumbersTM = new System.Windows.Forms.ComboBox();
@@ -343,6 +343,7 @@
             this.chkboxDuplaSena.TabIndex = 3;
             this.chkboxDuplaSena.Text = "Dupla-Sena";
             this.chkboxDuplaSena.UseVisualStyleBackColor = true;
+            this.chkboxDuplaSena.CheckedChanged += new System.EventHandler(this.chkboxDuplaSena_CheckedChanged);
             // 
             // pnlQuina
             // 
@@ -437,6 +438,16 @@
             this.pnlLotomania.Size = new System.Drawing.Size(410, 36);
             this.pnlLotomania.TabIndex = 12;
             // 
+            // chkboxUseUnsortedNumber
+            // 
+            this.chkboxUseUnsortedNumber.AutoSize = true;
+            this.chkboxUseUnsortedNumber.Location = new System.Drawing.Point(308, 10);
+            this.chkboxUseUnsortedNumber.Name = "chkboxUseUnsortedNumber";
+            this.chkboxUseUnsortedNumber.Size = new System.Drawing.Size(100, 17);
+            this.chkboxUseUnsortedNumber.TabIndex = 8;
+            this.chkboxUseUnsortedNumber.Text = "Aposta Espelho";
+            this.chkboxUseUnsortedNumber.UseVisualStyleBackColor = true;
+            // 
             // cboboxGamesLM
             // 
             this.cboboxGamesLM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -489,16 +500,6 @@
             this.chkboxLotomania.TabIndex = 3;
             this.chkboxLotomania.Text = "Lotomania";
             this.chkboxLotomania.UseVisualStyleBackColor = true;
-            // 
-            // chkboxUseUnsortedNumber
-            // 
-            this.chkboxUseUnsortedNumber.AutoSize = true;
-            this.chkboxUseUnsortedNumber.Location = new System.Drawing.Point(308, 10);
-            this.chkboxUseUnsortedNumber.Name = "chkboxUseUnsortedNumber";
-            this.chkboxUseUnsortedNumber.Size = new System.Drawing.Size(100, 17);
-            this.chkboxUseUnsortedNumber.TabIndex = 8;
-            this.chkboxUseUnsortedNumber.Text = "Aposta Espelho";
-            this.chkboxUseUnsortedNumber.UseVisualStyleBackColor = true;
             // 
             // pnlTimemania
             // 
