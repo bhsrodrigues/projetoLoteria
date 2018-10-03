@@ -26,10 +26,18 @@ namespace VisaoJogo
         private void btnPlay_Click(object sender, EventArgs e)
         {
             Model.FileName = txtPath.Text;
+            if (chkboxDuplaSena.Checked) playDuplaSena();
             if (chkLotofacil.Checked) playLotofacil();
-            /*Model save = new Model();
-            if (gameListLF != null) save.saveLotoFacil(gameListLF);*/
+            Model.saveValues();
             
+        }
+
+        private void playDuplaSena()
+        {
+            DuplaSena lf = new DuplaSena();
+
+            lf.playGame(Convert.ToInt16(cboboxTotalNumbersDS.Text), 6, 15, 60,
+                Convert.ToInt16(cboboxGamesDS.Text), "Dupla-Sena");
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
@@ -39,7 +47,7 @@ namespace VisaoJogo
 
         private bool enableButton()
         {
-
+            if (chkboxDuplaSena.Checked) return true;
             if (chkLotofacil.Checked) return true;
             if (chkboxMegaSena.Checked) return true;
             return false;
@@ -72,6 +80,11 @@ namespace VisaoJogo
         {
             getFolderToSave.ShowDialog();
             txtPath.Text = getFolderToSave.SelectedPath;
+        }
+
+        private void chkboxDuplaSena_CheckedChanged(object sender, EventArgs e)
+        {
+            changeComboStatus(chkboxDuplaSena, pnlDuplaSena);
         }
     }
 }

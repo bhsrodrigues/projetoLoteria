@@ -11,11 +11,11 @@ namespace CModelJogo
 
         private static List<double>[] allGamesValues;
 
-        private Excel.Application xlsapp;
+        internal static Excel.Application xlsapp;
 
-        private Excel.Workbook wb;
+        internal static Excel.Workbook wb;
 
-        private Excel.Worksheet ws;
+        internal static Excel.Worksheet ws;
         
         public Model() {
 
@@ -29,19 +29,17 @@ namespace CModelJogo
 
         public void saveGame(List<int[]> gameList, string gameName)
         {
+            if (gameName.Equals("Dupla-Sena"))
+            {
+                allGamesValues[1] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
+            }
             if (gameName.Equals("Lotofacil")) {
-                allGamesValues[3] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[2] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
             }
         }
 
-        public void saveValues()
+        public static void saveValues()
         {
-
-            //if (gameName.Equals("Lotofacil"))
-            //{
-            //    saveLotoFacil(gameList);
-            //}
-
             frontsheet();
 
             lfFrontSheet();
@@ -58,7 +56,7 @@ namespace CModelJogo
 
         }
 
-        public void frontsheet()
+        internal static void frontsheet()
         {
             ws = wb.Worksheets.Add();
 
@@ -72,7 +70,7 @@ namespace CModelJogo
 
         }
 
-        private void headerFrontSheet()
+        internal static void headerFrontSheet()
         {
             ws.Cells[1, 1].EntireRow.Font.Bold = true;
             ws.Cells.EntireRow.HorizontalAlignment = 2;
@@ -84,31 +82,54 @@ namespace CModelJogo
             ws.Cells[1, 3].Value = "Total Jogo";
         }
 
-        private void lfFrontSheet()
+        internal static void fulfillGamePrizeInformation()
+        {
+            for(int count = 2; count <= 8; count++)
+            {
+                if (allGamesValues[count - 2] is null)
+                {
+                    ws.Cells[count, 2].Value = 0;
+                    ws.Cells[count, 3].Value = "R$ 0,00";
+                }
+                else
+                {
+                    ws.Cells[count, 2].Value = (int)allGamesValues[count - 2][0];
+                    ws.Cells[count, 3].Value = ((int)allGamesValues[count - 2][0] * allGamesValues[count - 2][1]).ToString();
+                }
+            }
+        }
+
+        internal static void lfFrontSheet()
         {
             ws.Cells[2, 1].Value = "Dia de Sorte";
             ws.Cells[3, 1].Value = "Dupla-Sena";
+            //if (allGamesValues[1] is null){
+            //    ws.Cells[3, 2].Value = 0;
+            //    ws.Cells[3, 3].Value = "R$ 0,00";
+            //}
+            //else
+            //{
+            //    ws.Cells[3, 2].Value = (int)allGamesValues[1][0];
+            //    ws.Cells[3, 3].Value = ((int)allGamesValues[1][0] * allGamesValues[1][1]).ToString();
+            //}
             ws.Cells[4, 1].Value = "Lotofácil";
-            ws.Cells[4, 2].Value = (int) allGamesValues[3][0];
-            ws.Cells[4, 3].Value = ((int)allGamesValues[3][0] * allGamesValues[3][1]).ToString();
-            ws.Cells[4, 3].NumberFormat = "R$ #.###.###,00";
+            //ws.Cells[4, 2].Value = (int) allGamesValues[2][0];
+            //ws.Cells[4, 3].Value = ((int)allGamesValues[2][0] * allGamesValues[2][1]).ToString();
+            //ws.Cells[4, 3].NumberFormat = "R$ #.###.###,00";
             ws.Cells[5, 1].Value = "Lotomania";
             ws.Cells[6, 1].Value = "Mega-Sena";
             ws.Cells[7, 1].Value = "Quina";
             ws.Cells[8, 1].Value = "Timemania";
-            ws.Cells[2, 1].Value = "Lotofácil";
-            //ws.Cells[2, 2].Value = lotofacil[0];
-            //ws.Cells[2, 3].Value = lotofacil[0] * lotofacil[1];
-            //ws.Cells[2, 3].NumberFormat = "R$ #.###,##";
+            fulfillGamePrizeInformation();
         }
         
-        private int totalFrontSheet()
+        internal static int totalFrontSheet()
         {
             return ws.UsedRange.Rows.Count;
         }
 
 
-        private string actualDate()
+        internal static string actualDate()
         {
             string name;
 
@@ -119,7 +140,7 @@ namespace CModelJogo
 
         }
 
-        private string formatNumber(string value)
+        internal static string formatNumber(string value)
         {
             return value.Length == 1 ? "0" + value : value;
         }

@@ -18,7 +18,7 @@ namespace CModelJogo
 
             ws.Name = gameName;
 
-            List<double> listInfoGame = new List<double>() { gameList.Count, getGamePrize(gameList[0].Length) };
+            List<double> listInfoGame = new List<double>() { gameList.Count, getGamePrize(gameList[0].Length, gameName) };
 
             fillHeaderGame(gameList[0].Length, ws);
 
@@ -49,16 +49,16 @@ namespace CModelJogo
             }
         }
 
-        private static double getGamePrize(int numbersInGame)
+        private static double getGamePrize(int numbersInGame, string gameName)
         {
-
 
             StreamReader sr = new StreamReader(@"..\\..\\..\\CModelJogo\\TabelaPreco.txt");
             int number = 0;
             while (sr.Peek() >= 0)
             {
                 string[] itens = sr.ReadLine().Split(';');
-                if (itens[1].Equals(numbersInGame.ToString()))
+                if (itens[1].Equals(numbersInGame.ToString()) && 
+                    itens[0].Equals(gameName.ToUpper()))
                 {
                     number = Convert.ToInt32(itens[2]);
                     break;

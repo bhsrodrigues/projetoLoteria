@@ -18,7 +18,6 @@ namespace ConsoleApp1
             int totalGames, string gameName)
         {
             allGames = new List<int[]>();
-            
 
             for (int startGame = 0; startGame < totalGames; startGame++)
             {
@@ -41,13 +40,10 @@ namespace ConsoleApp1
                 Array.Sort(game);
 
                 allGames.Add(game);
-            }
-
-            
+            } 
 
             Model mdl = new Model();
             mdl.saveGame(allGames, gameName);
-            mdl.saveValues();
         }
         
 

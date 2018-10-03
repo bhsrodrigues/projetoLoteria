@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DuplaSena.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Lotofacil.cs" />
     <Compile Include="Program.cs" />
