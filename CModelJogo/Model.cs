@@ -30,7 +30,7 @@ namespace CModelJogo
         public void saveGame(List<int[]> gameList, string gameName)
         {
             if (gameName.Equals("Lotofacil")) {
-                allGamesValues[3] = LotofacilModel.saveLotoFacil(wb, ws, gameList);
+                allGamesValues[3] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
             }
         }
 
