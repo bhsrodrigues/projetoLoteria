@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
         private int totalNumbers;
         
-        public void playGame(int numberListToBet, int min, int max, int totalNumbers,
+        public List<int[]> playGame(int numberListToBet, int min, int max, int totalNumbers,
             int totalGames, string gameName)
         {
             allGames = new List<int[]>();
@@ -40,10 +40,12 @@ namespace ConsoleApp1
                 Array.Sort(game);
 
                 allGames.Add(game);
-            } 
+            }
 
-            Model mdl = new Model();
-            mdl.saveGame(allGames, gameName);
+            return allGames;
+
+            //Model mdl = new Model();
+            //mdl.saveGame(allGames, gameName);
         }
         
 

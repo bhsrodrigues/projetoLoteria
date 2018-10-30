@@ -9,7 +9,8 @@ namespace VisaoJogo
 {
     public partial class frmTelaJogo : Form
     {
-                public frmTelaJogo()
+        Model model;
+        public frmTelaJogo()
         {
             InitializeComponent();
         }
@@ -17,14 +18,15 @@ namespace VisaoJogo
         private void playLotofacil()
         {
 
-            Lotofacil lf = new Lotofacil();
+            const string gameName = "Lotofácil";
+            model.saveGame(new Lotofacil().playGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
+                Convert.ToInt16(cboboxGamesLF.Text), gameName), gameName);
 
-            lf.playGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
-                Convert.ToInt16(cboboxGamesLF.Text), "Lotofacil");
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            model = new Model();
             Model.FileName = txtPath.Text;
             if (chkboxDuplaSena.Checked) playDuplaSena();
             if (chkLotofacil.Checked) playLotofacil();
@@ -34,10 +36,10 @@ namespace VisaoJogo
 
         private void playDuplaSena()
         {
-            DuplaSena lf = new DuplaSena();
-
-            lf.playGame(Convert.ToInt16(cboboxTotalNumbersDS.Text), 6, 15, 60,
-                Convert.ToInt16(cboboxGamesDS.Text), "Dupla-Sena");
+            const string gameName = "Dupla-Sena";
+            model.saveGame(new DuplaSena().playGame(Convert.ToInt16(cboboxTotalNumbersDS.Text), 6, 15, 60,
+                Convert.ToInt16(cboboxGamesDS.Text), gameName), gameName);
+            
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)

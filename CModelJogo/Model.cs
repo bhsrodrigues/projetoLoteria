@@ -33,7 +33,7 @@ namespace CModelJogo
             {
                 allGamesValues[1] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
             }
-            if (gameName.Equals("Lotofacil")) {
+            if (gameName.Equals("Lotofácil")) {
                 allGamesValues[2] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
             }
         }
