@@ -318,17 +318,6 @@
             this.cboboxTotalNumbersDS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboboxTotalNumbersDS.Enabled = false;
             this.cboboxTotalNumbersDS.FormattingEnabled = true;
-            this.cboboxTotalNumbersDS.Items.AddRange(new object[] {
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
             this.cboboxTotalNumbersDS.Location = new System.Drawing.Point(109, 6);
             this.cboboxTotalNumbersDS.Name = "cboboxTotalNumbersDS";
             this.cboboxTotalNumbersDS.Size = new System.Drawing.Size(69, 21);

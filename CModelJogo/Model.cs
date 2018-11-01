@@ -31,14 +31,14 @@ namespace CModelJogo
         {
             if (gameName.Equals("Dupla-Sena"))
             {
-                allGamesValues[1] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[1] = new DuplaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
             }
-            if (gameName.Equals("Lotofácil")) {
-                allGamesValues[2] = LotofacilModel.saveGameSheet(wb, ws, gameList, gameName);
+            if (gameName.Equals("Lotofacil")) {
+                allGamesValues[2] = new LotofacilModel().saveGameSheet(wb, ws, gameList, gameName);
             }
         }
 
-        public static void saveValues()
+        public void saveValues()
         {
             frontsheet();
 

@@ -4,25 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CModelJogo;
 
 namespace VisaoJogo
 {
     public static class FieldsControl
     {
-        public static void ModifyControl(Control pnlLotofacil, bool enable)
+        public static void ModifyControl(Control pnlLotofacil, bool enable, string gameName)
         {
             foreach (Control item in pnlLotofacil.Controls)
             {
-                fieldsControl(item, enable);
+                fieldsControl(item, enable, gameName);
             }
         }
 
-        private static void fieldsControl(Control field, bool enable)
+        public static void loadNumbersGame(ComboBox combo, string gameName){
+
+            if (combo.Items.Count == 0)
+            {
+                foreach (int item in new GameModel().getNumbers(gameName))
+                {
+                    combo.Items.Add(item);
+                }
+            }
+            
+        }
+
+        private static void fieldsControl(Control field, bool enable, string gameName)
         {
             if (field is ComboBox)
             {
                 if (enable)
                 {
+                    loadNumbersGame((ComboBox)field, gameName);
                     firstComboItem((ComboBox)field);
                     field.Enabled = enable;
                     

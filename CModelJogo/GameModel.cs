@@ -8,10 +8,15 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CModelJogo
 {
-    class GameModel
+    public class GameModel
     {
+        private static StreamReader sr;
+        public GameModel()
+        {
+            sr = new StreamReader(@"..\\..\\..\\CModelJogo\\TabelaPreco.txt", Encoding.UTF8);
+        }
 
-        protected static internal List<double> saveGameSheet(Excel.Workbook wb,
+        protected internal List<double> saveGameSheet(Excel.Workbook wb,
     Excel.Worksheet ws, List<int[]> gameList, string gameName)
         {
             ws = wb.Worksheets.Add();
@@ -38,7 +43,7 @@ namespace CModelJogo
             return listInfoGame;
         }
 
-        private static void fillHeaderGame(int numbersInGame, Excel.Worksheet ws)
+        private void fillHeaderGame(int numbersInGame, Excel.Worksheet ws)
         {
 
             ws.Cells[1, 1].EntireRow.Font.Bold = true;
@@ -49,10 +54,8 @@ namespace CModelJogo
             }
         }
 
-        private static double getGamePrize(int numbersInGame, string gameName)
+        private double getGamePrize(int numbersInGame, string gameName)
         {
-
-            StreamReader sr = new StreamReader(@"..\\..\\..\\CModelJogo\\TabelaPreco.txt");
             int number = 0;
             while (sr.Peek() >= 0)
             {
@@ -65,9 +68,29 @@ namespace CModelJogo
                 }
                 Array.Clear(itens, 0, itens.Length);
             }
-
+            
             return number * 0.01;
         }
 
+
+        public List<int> getNumbers(string gameName)
+        {
+
+            List<int> list = new List<int>();
+
+            while(sr.Peek() >= 0)
+            {
+                string[] itens = sr.ReadLine().Split(';');
+                if (gameName.ToUpper().Equals(itens[0].Trim()))
+                {
+                    list.Add(Convert.ToInt16(itens[1]));
+                }
+                Array.Clear(itens,0,itens.Length);
+                
+            }
+
+            return list;
+
+        }
     }
 }
