@@ -48,6 +48,23 @@ namespace VisaoJogo
                     nullComboItem((ComboBox)field);
                 }
             }
+            if (field is CheckBox)
+            {
+                if (enable)
+                {
+                    field.Enabled = true;
+                }
+                else
+                {
+                    field.Enabled = false;
+                    uncheckItem((CheckBox)field);
+                }
+            }
+        }
+        
+        private static void uncheckItem(CheckBox item)
+        {
+            item.Checked = false;
         }
 
         private static void firstComboItem(ComboBox item)

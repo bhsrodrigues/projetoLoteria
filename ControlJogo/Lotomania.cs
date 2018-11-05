@@ -1,21 +1,17 @@
-﻿using System;
+﻿using ConsoleApp1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CModelJogo;
 
-namespace ConsoleApp1
+namespace ControlJogo
 {
-    public class Game
+    public class Lotomania : Game
     {
-        public int[] game;
-        protected List<int[]> allGames;
 
-        protected int totalNumbers;
-        
         public List<int[]> playGame(int numberListToBet, int min, int max, int totalNumbers,
-            int totalGames, string gameName)
+            int totalGames, string gameName, bool betMirror)
         {
             allGames = new List<int[]>();
 
@@ -33,6 +29,7 @@ namespace ConsoleApp1
                     if (!existNumberOnGame(newNumber))
                     {
                         game[counter] = newNumber;
+                        
                         counter++;
                     }
                 }
@@ -40,35 +37,58 @@ namespace ConsoleApp1
                 Array.Sort(game);
 
                 allGames.Add(game);
+                
+                if (betMirror)
+                {
+                    allGames.Add(getUnusedNumbers(game));
+                }
             }
 
             return allGames;
-
-            //Model mdl = new Model();
-            //mdl.saveGame(allGames, gameName);
         }
-        
 
-        protected bool existNumberOnGame(int playedNumber)
+
+        private int[] getUnusedNumbers(int[] oldGame)
         {
-            foreach(int position in game)
+
+            int[] newGame = new int[50];
+            bool found = false;
+            int position = 0;
+
+            for (int x = 0; x < 100; x++)
             {
-                if (position == playedNumber) return true;
+                foreach(int item in oldGame)
+                {
+                    if(item == x)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found && position < 50) {
+                    newGame[position] = x;
+                    position++;
+                }
+                found = false;
             }
-            return false;
+
+            Array.Sort(newGame);
+
+            return newGame;
         }
 
-        protected virtual int getNumber()
+        protected override int getNumber()
         {
             Random rdn = new Random();
             int tempNumber = 0;
             bool foundNumber = false;
             while (!foundNumber)
             {
-                tempNumber = rdn.Next(1,totalNumbers+1);
+                tempNumber = rdn.Next(1, totalNumbers + 1);
                 if (tempNumber >= 1) foundNumber = true;
             }
-            return tempNumber;
+
+            return tempNumber == 100 ? 0 : tempNumber;
         }
 
     }

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace CModelJogo
 {
-    class DuplaSenaModel : GameModel
+    class LotomaniaModel : GameModel
     {
-
     }
 }

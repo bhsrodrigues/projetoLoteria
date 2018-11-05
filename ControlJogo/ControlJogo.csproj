@@ -50,6 +50,7 @@
     <Compile Include="DuplaSena.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Lotofacil.cs" />
+    <Compile Include="Lotomania.cs" />
     <Compile Include="MegaSena.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

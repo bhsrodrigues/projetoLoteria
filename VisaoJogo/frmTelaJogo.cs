@@ -40,11 +40,20 @@ namespace VisaoJogo
             if (chkboxDiaDeSorte.Checked) playDiaDeSorte();
             if (chkboxDuplaSena.Checked) playDuplaSena();
             if (chkLotofacil.Checked) playLotofacil();
+            if (chkboxLotomania.Checked) playLotomania();
             if (chkboxMegaSena.Checked) playMegaSena();
             if (chkboxQuina.Checked) playQuina();
             if (chkboxTimemania.Checked) playTimemania();
+            
             model.saveValues();
             
+        }
+
+        private void playLotomania()
+        {
+            const string gameName = "Lotomania";
+            model.saveGame(new Lotomania().playGame(Convert.ToInt16(cboboxTotalNumbersLM.Text), 50, 50, 100,
+                Convert.ToInt16(cboboxGamesLM.Text), gameName, chkboxUseUnsortedNumber.Checked), gameName);
         }
 
         private void playDiaDeSorte()
@@ -90,6 +99,7 @@ namespace VisaoJogo
             if (chkboxDiaDeSorte.Checked) return true;
             if (chkboxDuplaSena.Checked) return true;
             if (chkLotofacil.Checked) return true;
+            if (chkboxLotomania.Checked) return true;
             if (chkboxMegaSena.Checked) return true;
             if (chkboxQuina.Checked) return true;
             if (chkboxTimemania.Checked) return true;
@@ -143,6 +153,11 @@ namespace VisaoJogo
         private void chkboxTimemania_CheckedChanged(object sender, EventArgs e)
         {
             changeComboStatus(chkboxTimemania, pnlTimemania, "Timemania");
+        }
+
+        private void chkboxLotomania_CheckedChanged(object sender, EventArgs e)
+        {
+            changeComboStatus(chkboxLotomania, pnlLotomania, "Lotomania");
         }
     }
 }

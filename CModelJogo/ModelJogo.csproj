@@ -48,6 +48,7 @@
     <Compile Include="DuplaSenaModel.cs" />
     <Compile Include="GameModel.cs" />
     <Compile Include="LotofacilModel.cs" />
+    <Compile Include="LotomaniaModel.cs" />
     <Compile Include="MegaSenaModel.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

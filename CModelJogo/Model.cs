@@ -37,8 +37,13 @@ namespace CModelJogo
             {
                 allGamesValues[1] = new DuplaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
             }
-            if (gameName.Equals("Lotofacil")) {
+            if (gameName.Equals("Lotofacil"))
+            {
                 allGamesValues[2] = new LotofacilModel().saveGameSheet(wb, ws, gameList, gameName);
+            }
+            if (gameName.Equals("Lotomania"))
+            {
+                allGamesValues[3] = new LotomaniaModel().saveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Mega-Sena"))
             {
@@ -62,7 +67,7 @@ namespace CModelJogo
 
             xlsapp.DisplayAlerts = false;
 
-            FileName = String.Format(@"{0}\File{1}.xlsx", FileName, actualDate());
+            FileName = String.Format(@"{0}\Game{1}.xlsx", FileName, actualDate());
             wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
 
 
@@ -150,7 +155,8 @@ namespace CModelJogo
             string name;
 
             name = DateTime.Now.Year.ToString() + formatNumber(DateTime.Now.Month.ToString())
-          + formatNumber(DateTime.Now.Day.ToString());
+          + formatNumber(DateTime.Now.Day.ToString()) + formatNumber(DateTime.Now.Hour.ToString())
+          + formatNumber(DateTime.Now.Minute.ToString()) + formatNumber(DateTime.Now.Second.ToString());
 
             return name;
 
