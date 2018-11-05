@@ -140,11 +140,6 @@
             this.cboboxTotalNumbersLF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboboxTotalNumbersLF.Enabled = false;
             this.cboboxTotalNumbersLF.FormattingEnabled = true;
-            this.cboboxTotalNumbersLF.Items.AddRange(new object[] {
-            "15",
-            "16",
-            "17",
-            "18"});
             this.cboboxTotalNumbersLF.Location = new System.Drawing.Point(109, 6);
             this.cboboxTotalNumbersLF.Name = "cboboxTotalNumbersLF";
             this.cboboxTotalNumbersLF.Size = new System.Drawing.Size(69, 21);
@@ -226,17 +221,6 @@
             this.cboboxTotalNumbersMS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboboxTotalNumbersMS.Enabled = false;
             this.cboboxTotalNumbersMS.FormattingEnabled = true;
-            this.cboboxTotalNumbersMS.Items.AddRange(new object[] {
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
             this.cboboxTotalNumbersMS.Location = new System.Drawing.Point(109, 6);
             this.cboboxTotalNumbersMS.Name = "cboboxTotalNumbersMS";
             this.cboboxTotalNumbersMS.Size = new System.Drawing.Size(69, 21);
@@ -380,18 +364,6 @@
             this.cboboxTotalNumbersQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboboxTotalNumbersQ.Enabled = false;
             this.cboboxTotalNumbersQ.FormattingEnabled = true;
-            this.cboboxTotalNumbersQ.Items.AddRange(new object[] {
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
             this.cboboxTotalNumbersQ.Location = new System.Drawing.Point(109, 6);
             this.cboboxTotalNumbersQ.Name = "cboboxTotalNumbersQ";
             this.cboboxTotalNumbersQ.Size = new System.Drawing.Size(69, 21);
@@ -406,6 +378,7 @@
             this.chkboxQuina.TabIndex = 3;
             this.chkboxQuina.Text = "Quina";
             this.chkboxQuina.UseVisualStyleBackColor = true;
+            this.chkboxQuina.CheckedChanged += new System.EventHandler(this.chkboxQuina_CheckedChanged);
             // 
             // lblOthers
             // 
@@ -552,6 +525,7 @@
             this.chkboxTimemania.TabIndex = 3;
             this.chkboxTimemania.Text = "Timemania";
             this.chkboxTimemania.UseVisualStyleBackColor = true;
+            this.chkboxTimemania.CheckedChanged += new System.EventHandler(this.chkboxTimemania_CheckedChanged);
             // 
             // pnlDiaSorte
             // 
@@ -599,16 +573,6 @@
             this.cboboxTotalNumbersDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboboxTotalNumbersDia.Enabled = false;
             this.cboboxTotalNumbersDia.FormattingEnabled = true;
-            this.cboboxTotalNumbersDia.Items.AddRange(new object[] {
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
             this.cboboxTotalNumbersDia.Location = new System.Drawing.Point(109, 6);
             this.cboboxTotalNumbersDia.Name = "cboboxTotalNumbersDia";
             this.cboboxTotalNumbersDia.Size = new System.Drawing.Size(69, 21);
@@ -623,6 +587,7 @@
             this.chkboxDiaDeSorte.TabIndex = 3;
             this.chkboxDiaDeSorte.Text = "Dia de Sorte";
             this.chkboxDiaDeSorte.UseVisualStyleBackColor = true;
+            this.chkboxDiaDeSorte.CheckedChanged += new System.EventHandler(this.chkboxDiaDeSorte_CheckedChanged);
             // 
             // frmTelaJogo
             // 

@@ -29,12 +29,28 @@ namespace CModelJogo
 
         public void saveGame(List<int[]> gameList, string gameName)
         {
+            if (gameName.Equals("DiaDeSorte"))
+            {
+                allGamesValues[0] = new DiaDeSorteModel().saveGameSheet(wb, ws, gameList, gameName);
+            }
             if (gameName.Equals("Dupla-Sena"))
             {
                 allGamesValues[1] = new DuplaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Lotofacil")) {
                 allGamesValues[2] = new LotofacilModel().saveGameSheet(wb, ws, gameList, gameName);
+            }
+            if (gameName.Equals("Mega-Sena"))
+            {
+                allGamesValues[4] = new MegaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
+            }
+            if (gameName.Equals("Quina"))
+            {
+                allGamesValues[5] = new QuinaModel().saveGameSheet(wb, ws, gameList, gameName);
+            }
+            if (gameName.Equals("Timemania"))
+            {
+                allGamesValues[6] = new TimemaniaModel().saveGameSheet(wb, ws, gameList, gameName);
             }
         }
 
