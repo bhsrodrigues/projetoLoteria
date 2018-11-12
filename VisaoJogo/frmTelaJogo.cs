@@ -116,7 +116,11 @@ namespace VisaoJogo
             {
                 FieldsControl.ModifyControl(panel, false, gameName);
             }
-            btnPlay.Enabled = enableButton();
+            if (txtPath.Text.Length != 0)
+            {
+                btnPlay.Enabled = enableButton();
+            }
+            
         }
 
         private void chkboxMegaSena_CheckedChanged(object sender, EventArgs e)
@@ -133,13 +137,14 @@ namespace VisaoJogo
         {
             getFolderToSave.ShowDialog();
             txtPath.Text = getFolderToSave.SelectedPath;
+            chkboxMegaSena_CheckedChanged(sender, e);
         }
 
         private void chkboxDuplaSena_CheckedChanged(object sender, EventArgs e)
         {
             changeComboStatus(chkboxDuplaSena, pnlDuplaSena, "Dupla-sena");
         }
-
+        
         private void chkboxDiaDeSorte_CheckedChanged(object sender, EventArgs e)
         {
             changeComboStatus(chkboxDiaDeSorte, pnlDiaSorte, "Diadesorte");

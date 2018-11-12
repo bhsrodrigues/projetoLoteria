@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CModelJogo
@@ -68,12 +69,30 @@ namespace CModelJogo
             xlsapp.DisplayAlerts = false;
 
             FileName = String.Format(@"{0}\Game{1}.xlsx", FileName, actualDate());
-            wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
+
+            try
+            {
+                wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
+                //wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
 
 
-            wb.Close();
+                wb.Close();
 
-            xlsapp.Quit();
+                xlsapp.Quit();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível gerar o arquivo. Tente novamente mais tarde");
+               // wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
+
+
+                wb.Close();
+
+                xlsapp.Quit();
+
+            }
+
 
         }
 
@@ -110,12 +129,13 @@ namespace CModelJogo
                 if (allGamesValues[count - 2] is null)
                 {
                     ws.Cells[count, 2].Value = 0;
-                    ws.Cells[count, 3].Value = "R$ 0,00";
+                    ws.Cells[count, 3].Value = "R$0,00";
                 }
                 else
                 {
                     ws.Cells[count, 2].Value = (int)allGamesValues[count - 2][0];
-                    ws.Cells[count, 3].Value = ((int)allGamesValues[count - 2][0] * allGamesValues[count - 2][1]).ToString();
+                    ws.Cells[count, 3].Value = ((int)allGamesValues[count - 2][0] * allGamesValues[count - 2][1]);
+                    ws.Cells[count, 3].NumberFormat = "R$#.###.###,00";
                 }
             }
         }

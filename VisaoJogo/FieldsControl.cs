@@ -39,8 +39,6 @@ namespace VisaoJogo
                     loadNumbersGame((ComboBox)field, gameName);
                     firstComboItem((ComboBox)field);
                     field.Enabled = enable;
-                    
-;
                 }
                 else
                 {
