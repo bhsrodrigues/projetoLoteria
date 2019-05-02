@@ -16,16 +16,16 @@ namespace CModelJogo
             sr = new StreamReader(@"..\\..\\..\\CModelJogo\\TabelaPreco.txt", Encoding.UTF8);
         }
 
-        protected internal List<double> saveGameSheet(Excel.Workbook wb,
+        protected internal List<double> SaveGameSheet(Excel.Workbook wb,
     Excel.Worksheet ws, List<int[]> gameList, string gameName)
         {
             ws = wb.Worksheets.Add();
 
             ws.Name = gameName;
 
-            List<double> listInfoGame = new List<double>() { gameList.Count, getGamePrize(gameList[0].Length, gameName) };
+            List<double> listInfoGame = new List<double>() { gameList.Count, GetGamePrize(gameList[0].Length, gameName) };
 
-            fillHeaderGame(gameList[0].Length, ws);
+            FillHeaderGame(gameList[0].Length, ws);
 
             int row = 2;
 
@@ -43,7 +43,7 @@ namespace CModelJogo
             return listInfoGame;
         }
 
-        private void fillHeaderGame(int numbersInGame, Excel.Worksheet ws)
+        private void FillHeaderGame(int numbersInGame, Excel.Worksheet ws)
         {
 
             ws.Cells[1, 1].EntireRow.Font.Bold = true;
@@ -54,7 +54,7 @@ namespace CModelJogo
             }
         }
 
-        private double getGamePrize(int numbersInGame, string gameName)
+        private double GetGamePrize(int numbersInGame, string gameName)
         {
             int number = 0;
             while (sr.Peek() >= 0)
@@ -73,7 +73,7 @@ namespace CModelJogo
         }
 
 
-        public List<int> getNumbers(string gameName)
+        public List<int> GetNumbers(string gameName)
         {
 
             List<int> list = new List<int>();

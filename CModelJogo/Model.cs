@@ -8,7 +8,7 @@ namespace CModelJogo
     public class Model
     {
 
-        public static string FileName;
+        public static string fileName { get; set; }
 
         private static List<double>[] allGamesValues;
 
@@ -28,53 +28,51 @@ namespace CModelJogo
             
         }
 
-        public void saveGame(List<int[]> gameList, string gameName)
+        public void SaveGame(List<int[]> gameList, string gameName)
         {
             if (gameName.Equals("DiaDeSorte"))
             {
-                allGamesValues[0] = new DiaDeSorteModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[0] = new DiaDeSorteModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Dupla-Sena"))
             {
-                allGamesValues[1] = new DuplaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[1] = new DuplaSenaModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Lotofacil"))
             {
-                allGamesValues[2] = new LotofacilModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[2] = new LotofacilModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Lotomania"))
             {
-                allGamesValues[3] = new LotomaniaModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[3] = new LotomaniaModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Mega-Sena"))
             {
-                allGamesValues[4] = new MegaSenaModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[4] = new MegaSenaModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Quina"))
             {
-                allGamesValues[5] = new QuinaModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[5] = new QuinaModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
             if (gameName.Equals("Timemania"))
             {
-                allGamesValues[6] = new TimemaniaModel().saveGameSheet(wb, ws, gameList, gameName);
+                allGamesValues[6] = new TimemaniaModel().SaveGameSheet(wb, ws, gameList, gameName);
             }
         }
 
-        public void saveValues()
+        public void SaveValues()
         {
-            frontsheet();
+            Frontsheet();
 
-            lfFrontSheet();
+            GameInfoFrontSheet();
 
             xlsapp.DisplayAlerts = false;
 
-            FileName = String.Format(@"{0}\Game{1}.xlsx", FileName, actualDate());
+            fileName = String.Format(@"{0}\Game{1}.xlsx", fileName, ActualDate());
 
             try
             {
-                wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
-                //wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
-
+                wb.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault);
 
                 wb.Close();
 
@@ -84,19 +82,16 @@ namespace CModelJogo
             catch (Exception ex)
             {
                 MessageBox.Show("Não foi possível gerar o arquivo. Tente novamente mais tarde");
-               // wb.SaveAs(FileName, Excel.XlFileFormat.xlWorkbookDefault);
-
 
                 wb.Close();
 
                 xlsapp.Quit();
 
             }
-
-
+            
         }
 
-        internal static void frontsheet()
+        internal static void Frontsheet()
         {
             ws = wb.Worksheets.Add();
 
@@ -104,13 +99,13 @@ namespace CModelJogo
 
             ws.Move(wb.Worksheets[1]);
 
-            headerFrontSheet();
+            HeaderFrontSheet();
 
-            totalFrontSheet();
+            TotalFrontSheet();
 
         }
 
-        internal static void headerFrontSheet()
+        internal static void HeaderFrontSheet()
         {
             ws.Cells[1, 1].EntireRow.Font.Bold = true;
             ws.Cells.EntireRow.HorizontalAlignment = 2;
@@ -122,7 +117,7 @@ namespace CModelJogo
             ws.Cells[1, 3].Value = "Total Jogo";
         }
 
-        internal static void fulfillGamePrizeInformation()
+        internal static void FulfillGamePrizeInformation()
         {
             for(int count = 2; count <= 8; count++)
             {
@@ -140,49 +135,40 @@ namespace CModelJogo
             }
         }
 
-        internal static void lfFrontSheet()
+        internal static void GameInfoFrontSheet()
         {
             ws.Cells[2, 1].Value = "Dia de Sorte";
             ws.Cells[3, 1].Value = "Dupla-Sena";
-            //if (allGamesValues[1] is null){
-            //    ws.Cells[3, 2].Value = 0;
-            //    ws.Cells[3, 3].Value = "R$ 0,00";
-            //}
-            //else
-            //{
-            //    ws.Cells[3, 2].Value = (int)allGamesValues[1][0];
-            //    ws.Cells[3, 3].Value = ((int)allGamesValues[1][0] * allGamesValues[1][1]).ToString();
-            //}
             ws.Cells[4, 1].Value = "Lotofácil";
-            //ws.Cells[4, 2].Value = (int) allGamesValues[2][0];
-            //ws.Cells[4, 3].Value = ((int)allGamesValues[2][0] * allGamesValues[2][1]).ToString();
-            //ws.Cells[4, 3].NumberFormat = "R$ #.###.###,00";
             ws.Cells[5, 1].Value = "Lotomania";
             ws.Cells[6, 1].Value = "Mega-Sena";
             ws.Cells[7, 1].Value = "Quina";
             ws.Cells[8, 1].Value = "Timemania";
-            fulfillGamePrizeInformation();
+            FulfillGamePrizeInformation();
         }
         
-        internal static int totalFrontSheet()
+        internal static int TotalFrontSheet()
         {
             return ws.UsedRange.Rows.Count;
         }
 
 
-        internal static string actualDate()
+        internal static string ActualDate()
         {
-            string name;
+            string Name;
 
-            name = DateTime.Now.Year.ToString() + formatNumber(DateTime.Now.Month.ToString())
-          + formatNumber(DateTime.Now.Day.ToString()) + formatNumber(DateTime.Now.Hour.ToString())
-          + formatNumber(DateTime.Now.Minute.ToString()) + formatNumber(DateTime.Now.Second.ToString());
+            Name = DateTime.Now.Year.ToString() + 
+                FormatNumber(DateTime.Now.Month.ToString()) + 
+                FormatNumber(DateTime.Now.Day.ToString()) + 
+                FormatNumber(DateTime.Now.Hour.ToString()) + 
+                FormatNumber(DateTime.Now.Minute.ToString()) + 
+                FormatNumber(DateTime.Now.Second.ToString());
 
-            return name;
+            return Name;
 
         }
 
-        internal static string formatNumber(string value)
+        internal static string FormatNumber(string value)
         {
             return value.Length == 1 ? "0" + value : value;
         }

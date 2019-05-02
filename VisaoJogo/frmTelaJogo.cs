@@ -9,26 +9,26 @@ namespace VisaoJogo
 {
     public partial class frmTelaJogo : Form
     {
-        Model model;
+        private Model model;
         public frmTelaJogo()
         {
             InitializeComponent();
         }
 
-        private void playLotofacil()
+        private void PlayLotofacil()
         {
 
             const string gameName = "Lotofacil";
-            model.saveGame(new Lotofacil().playGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
+            model.SaveGame(new Lotofacil().PlayGame(Convert.ToInt16(cboboxTotalNumbersLF.Text), 15, 18, 25,
                 Convert.ToInt16(cboboxGamesLF.Text), gameName), gameName);
 
         }
 
-        private void playMegaSena()
+        private void PlayMegaSena()
         {
 
             const string gameName = "Mega-Sena";
-            model.saveGame(new MegaSena().playGame(Convert.ToInt16(cboboxTotalNumbersMS.Text), 6, 15, 60,
+            model.SaveGame(new MegaSena().PlayGame(Convert.ToInt16(cboboxTotalNumbersMS.Text), 6, 15, 60,
                 Convert.ToInt16(cboboxGamesMS.Text), gameName), gameName);
 
         }
@@ -36,65 +36,68 @@ namespace VisaoJogo
         private void btnPlay_Click(object sender, EventArgs e)
         {
             model = new Model();
-            Model.FileName = txtPath.Text;
-            if (chkboxDiaDeSorte.Checked) playDiaDeSorte();
-            if (chkboxDuplaSena.Checked) playDuplaSena();
-            if (chkLotofacil.Checked) playLotofacil();
-            if (chkboxLotomania.Checked) playLotomania();
-            if (chkboxMegaSena.Checked) playMegaSena();
-            if (chkboxQuina.Checked) playQuina();
-            if (chkboxTimemania.Checked) playTimemania();
+            Model.fileName = txtPath.Text;
+            if (chkboxDiaDeSorte.Checked) PlayDiaDeSorte();
+            if (chkboxDuplaSena.Checked) PlayDuplaSena();
+            if (chkLotofacil.Checked) PlayLotofacil();
+            if (chkboxLotomania.Checked) PlayLotomania();
+            if (chkboxMegaSena.Checked) PlayMegaSena();
+            if (chkboxQuina.Checked) PlayQuina();
+            if (chkboxTimemania.Checked) PlayTimemania();
             
-            model.saveValues();
+            model.SaveValues();
+
+            MessageBox.Show(String.Format("Arquivo salvo com sucesso. Acesse o diretório \n\n{0}"
+                ,Model.fileName));
             
         }
 
-        private void playLotomania()
+        private void PlayLotomania()
         {
             const string gameName = "Lotomania";
-            model.saveGame(new Lotomania().playGame(Convert.ToInt16(cboboxTotalNumbersLM.Text), 50, 50, 100,
+            model.SaveGame(new Lotomania().PlayGame(Convert.ToInt16(cboboxTotalNumbersLM.Text), 50, 50, 100,
                 Convert.ToInt16(cboboxGamesLM.Text), gameName, chkboxUseUnsortedNumber.Checked), gameName);
         }
 
-        private void playDiaDeSorte()
+        private void PlayDiaDeSorte()
         {
             const string gameName = "DiaDeSorte";
-            model.saveGame(new DiaDeSorte().playGame(Convert.ToInt16(cboboxTotalNumbersDia.Text), 7, 15, 31,
+            model.SaveGame(new DiaDeSorte().PlayGame(Convert.ToInt16(cboboxTotalNumbersDia.Text), 7, 15, 31,
                 Convert.ToInt16(cboboxGamesDia.Text), gameName), gameName);
         }
 
-        private void playDuplaSena()
+        private void PlayDuplaSena()
         {
             const string gameName = "Dupla-Sena";
             
-            model.saveGame(new DuplaSena().playGame(Convert.ToInt16(cboboxTotalNumbersDS.Text), 6, 15, 60,
+            model.SaveGame(new DuplaSena().PlayGame(Convert.ToInt16(cboboxTotalNumbersDS.Text), 6, 15, 60,
                 Convert.ToInt16(cboboxGamesDS.Text), gameName), gameName);
             
         }
 
-        private void playTimemania()
+        private void PlayTimemania()
         {
             const string gameName = "Timemania";
 
-            model.saveGame(new Timemania().playGame(Convert.ToInt16(cboboxTotalNumbersTM.Text), 10, 10, 80,
+            model.SaveGame(new Timemania().PlayGame(Convert.ToInt16(cboboxTotalNumbersTM.Text), 10, 10, 80,
                 Convert.ToInt16(cboboxGamesTM.Text), gameName), gameName);
 
         }
 
-        private void playQuina()
+        private void PlayQuina()
         {
             const string gameName = "Quina";
 
-            model.saveGame(new Quina().playGame(Convert.ToInt16(cboboxTotalNumbersQ.Text), 5, 15, 80,
+            model.SaveGame(new Quina().PlayGame(Convert.ToInt16(cboboxTotalNumbersQ.Text), 5, 15, 80,
                 Convert.ToInt16(cboboxGamesQ.Text), gameName), gameName);
         }
 
         private void chkLotofacil_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkLotofacil, pnlLotofacil, "Lotofacil");
+            ChangeComboStatus(chkLotofacil, pnlLotofacil, "Lotofacil");
         }
 
-        private bool enableButton()
+        private bool EnableButton()
         {
             if (chkboxDiaDeSorte.Checked) return true;
             if (chkboxDuplaSena.Checked) return true;
@@ -106,7 +109,7 @@ namespace VisaoJogo
             return false;
         }
 
-        private void changeComboStatus(CheckBox check, Panel panel, string gameName)
+        private void ChangeComboStatus(CheckBox check, Panel panel, string gameName)
         {
             if (check.Checked)
             {
@@ -118,14 +121,14 @@ namespace VisaoJogo
             }
             if (txtPath.Text.Length != 0)
             {
-                btnPlay.Enabled = enableButton();
+                btnPlay.Enabled = EnableButton();
             }
             
         }
 
         private void chkboxMegaSena_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxMegaSena, pnlMegaSena, "Mega-Sena");
+            ChangeComboStatus(chkboxMegaSena, pnlMegaSena, "Mega-Sena");
         }
 
         private void cboboxTotalNumbersLF_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,27 +145,27 @@ namespace VisaoJogo
 
         private void chkboxDuplaSena_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxDuplaSena, pnlDuplaSena, "Dupla-sena");
+            ChangeComboStatus(chkboxDuplaSena, pnlDuplaSena, "Dupla-sena");
         }
         
         private void chkboxDiaDeSorte_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxDiaDeSorte, pnlDiaSorte, "Diadesorte");
+            ChangeComboStatus(chkboxDiaDeSorte, pnlDiaSorte, "Diadesorte");
         }
 
         private void chkboxQuina_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxQuina, pnlQuina, "Quina");
+            ChangeComboStatus(chkboxQuina, pnlQuina, "Quina");
         }
 
         private void chkboxTimemania_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxTimemania, pnlTimemania, "Timemania");
+            ChangeComboStatus(chkboxTimemania, pnlTimemania, "Timemania");
         }
 
         private void chkboxLotomania_CheckedChanged(object sender, EventArgs e)
         {
-            changeComboStatus(chkboxLotomania, pnlLotomania, "Lotomania");
+            ChangeComboStatus(chkboxLotomania, pnlLotomania, "Lotomania");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
         protected int totalNumbers;
         
-        public List<int[]> playGame(int numberListToBet, int min, int max, int totalNumbers,
+        public virtual List<int[]> PlayGame(int numberListToBet, int min, int max, int totalNumbers,
             int totalGames, string gameName)
         {
             allGames = new List<int[]>();
@@ -29,8 +29,8 @@ namespace ConsoleApp1
 
                 while (counter < numberListToBet)
                 {
-                    var newNumber = getNumber();
-                    if (!existNumberOnGame(newNumber))
+                    var newNumber = GetNumber();
+                    if (!ExistNumberOnGame(newNumber))
                     {
                         game[counter] = newNumber;
                         counter++;
@@ -49,7 +49,7 @@ namespace ConsoleApp1
         }
         
 
-        protected bool existNumberOnGame(int playedNumber)
+        protected bool ExistNumberOnGame(int playedNumber)
         {
             foreach(int position in game)
             {
@@ -58,7 +58,7 @@ namespace ConsoleApp1
             return false;
         }
 
-        protected virtual int getNumber()
+        protected virtual int GetNumber()
         {
             Random rdn = new Random();
             int tempNumber = 0;

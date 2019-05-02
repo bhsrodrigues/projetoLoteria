@@ -10,7 +10,10 @@ namespace ControlJogo
     public class Lotomania : Game
     {
 
-        public List<int[]> playGame(int numberListToBet, int min, int max, int totalNumbers,
+        public Lotomania() : base(){
+            }
+
+        public List<int[]> PlayGame(int numberListToBet, int min, int max, int totalNumbers,
             int totalGames, string gameName, bool betMirror)
         {
             allGames = new List<int[]>();
@@ -25,8 +28,8 @@ namespace ControlJogo
 
                 while (counter < numberListToBet)
                 {
-                    var newNumber = getNumber();
-                    if (!existNumberOnGame(newNumber))
+                    var newNumber = GetNumber();
+                    if (!ExistNumberOnGame(newNumber))
                     {
                         game[counter] = newNumber;
                         
@@ -40,7 +43,7 @@ namespace ControlJogo
                 
                 if (betMirror)
                 {
-                    allGames.Add(getUnusedNumbers(game));
+                    allGames.Add(GetUnusedNumbers(game));
                 }
             }
 
@@ -48,7 +51,7 @@ namespace ControlJogo
         }
 
 
-        private int[] getUnusedNumbers(int[] oldGame)
+        private int[] GetUnusedNumbers(int[] oldGame)
         {
 
             int[] newGame = new int[50];
@@ -77,7 +80,7 @@ namespace ControlJogo
             return newGame;
         }
 
-        protected override int getNumber()
+        protected override int GetNumber()
         {
             Random rdn = new Random();
             int tempNumber = 0;

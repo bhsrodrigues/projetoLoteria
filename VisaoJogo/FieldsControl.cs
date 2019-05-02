@@ -14,15 +14,15 @@ namespace VisaoJogo
         {
             foreach (Control item in pnlGame.Controls)
             {
-                fieldsControl(item, enable, gameName);
+                FieldControl(item, enable, gameName);
             }
         }
 
-        public static void loadNumbersGame(ComboBox combo, string gameName){
+        public static void LoadNumbersGame(ComboBox combo, string gameName){
 
             if (combo.Items.Count == 0)
             {
-                foreach (int item in new GameModel().getNumbers(gameName))
+                foreach (int item in new GameModel().GetNumbers(gameName))
                 {
                     combo.Items.Add(item);
                 }
@@ -30,20 +30,20 @@ namespace VisaoJogo
             
         }
 
-        private static void fieldsControl(Control field, bool enable, string gameName)
+        private static void FieldControl(Control field, bool enable, string gameName)
         {
             if (field is ComboBox)
             {
                 if (enable)
                 {
-                    loadNumbersGame((ComboBox)field, gameName);
-                    firstComboItem((ComboBox)field);
+                    LoadNumbersGame((ComboBox)field, gameName);
+                    FirstComboItem((ComboBox)field);
                     field.Enabled = enable;
                 }
                 else
                 {
                     field.Enabled = enable;
-                    nullComboItem((ComboBox)field);
+                    NullComboItem((ComboBox)field);
                 }
             }
             if (field is CheckBox)
@@ -55,22 +55,22 @@ namespace VisaoJogo
                 else
                 {
                     field.Enabled = false;
-                    uncheckItem((CheckBox)field);
+                    UncheckItem((CheckBox)field);
                 }
             }
         }
         
-        private static void uncheckItem(CheckBox item)
+        private static void UncheckItem(CheckBox item)
         {
             item.Checked = false;
         }
 
-        private static void firstComboItem(ComboBox item)
+        private static void FirstComboItem(ComboBox item)
         {
             item.SelectedIndex = 0;
         }
 
-        private static void nullComboItem(ComboBox item)
+        private static void NullComboItem(ComboBox item)
         {
             item.SelectedIndex = -1;
         }

@@ -11,9 +11,6 @@ namespace ControlJogo
     {
         static void Main(string[] args)
         {
-            //Game g = new Game(15, 15, 18, 25);
-            //g.playGame();
-            //System.Threading.Thread.Sleep(5000);
 
         }
     }
