@@ -18,7 +18,7 @@ namespace VisaoJogo
             }
         }
 
-        public static void LoadNumbersGame(ComboBox combo, string gameName){
+        private static void LoadNumbersGame(ComboBox combo, string gameName){
 
             if (combo.Items.Count == 0)
             {
